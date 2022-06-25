@@ -118,9 +118,9 @@
                 $("#percent").change((e) => {
 
                     $("#comments").empty()
-                    //$( "#likes" ).val(timeLineModule.countLikes( $( "#slider-range" ).slider( "values", 0 ), $( "#slider-range" ).slider( "values", 1 ),$("#percent").val() ) );
-                    //$( "#dislikes" ).val(timeLineModule.countDisLikes( $( "#slider-range" ).slider( "values", 0 ), $( "#slider-range" ).slider( "values", 1 ),$("#percent").val() ) );
-                   // obj=timeLineModule.filterListByTime($( "#slider-range" ).slider( "values", 0 ) ,$( "#slider-range" ).slider( "values", 1 ),$("#percent").val() );
+                    $( "#likes" ).val(timeLineModule.countLikes( timeLineModule.getStartSelect(), timeLineModule.getStopSelect(),$("#percent").val() ) );
+                    $( "#dislikes" ).val(timeLineModule.countDisLikes( timeLineModule.getStartSelect() ,timeLineModule.getStopSelect(),$("#percent").val() ) );
+                    obj=timeLineModule.filterListByTime(timeLineModule.getStartSelect() ,timeLineModule.getStopSelect(),$("#percent").val() );
                     let html = '';
                     for (let key in obj) {
                         html += '<div class="card bg-outline-info text-dark  mt-5" id='  + obj[key].id + '>';
