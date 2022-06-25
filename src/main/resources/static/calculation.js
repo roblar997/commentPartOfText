@@ -322,20 +322,20 @@ var timeLineModule = (function(){
         return timeline;
     }
 
-    function setPStartSelect(startSelect){
-
+    function setPStartSelect(selected){
+        startSelected = selected;
     }
 
     function getPStartSelect(){
-
+        return startSelected;
     }
 
-    function setPStopSelect(stopSelect){
-
+    function setPStopSelect(selected){
+        stopSelected = selected;
     }
 
     function  getPStopSelect(){
-
+        return stopSelected;
     }
 
     function addPTimeLine(timeline){
@@ -479,16 +479,16 @@ var timeLineModule = (function(){
             return [res[0]-1,res[1]-1]
         },
         setStartSelect: function(startSelect){
-
+            setPStartSelect(startSelect)
         },
         getStartSelect: function(){
-
+            return getPStartSelect();
         },
         setStopSelect: function(stopSelect){
-
+                setPStopSelect(stopSelect)
         },
         getStopSelect: function (){
-
+                return getPStopSelect();
         }
 
 
