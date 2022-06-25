@@ -321,6 +321,23 @@ var timeLineModule = (function(){
         timeline.timestampChanged = new Date().valueOf()
         return timeline;
     }
+
+    function setPStartSelect(startSelect){
+
+    }
+
+    function getPStartSelect(){
+
+    }
+
+    function setPStopSelect(stopSelect){
+
+    }
+
+    function  getPStopSelect(){
+
+    }
+
     function addPTimeLine(timeline){
         timeLines.push(timeline);
         $( "#amount" ).val( "" + startSelected+
@@ -461,7 +478,19 @@ var timeLineModule = (function(){
             let res = rangeSearchP(liste,start+1,end+1)
             return [res[0]-1,res[1]-1]
         },
-        ge
+        setStartSelect: function(startSelect){
+
+        },
+        getStartSelect: function(){
+
+        },
+        setStopSelect: function(stopSelect){
+
+        },
+        getStopSelect: function (){
+
+        }
+
 
     }
 })();

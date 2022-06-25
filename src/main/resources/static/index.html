@@ -28,6 +28,12 @@
                 timeLineModule.extractFeatureAndUpdate()
 
             });
+            $("#textToComment").mouseup((e)=>{
+
+                console.log($('#textToComment')[0].selectionStart + " " + $('#textToComment')[0].selectionEnd)
+                timeLineModule.setStartSelect($('#textToComment')[0].selectionStart)
+                timeLineModule.setStopSelect( $('#textToComment')[0].selectionEnd)
+            })
             $("#changeButton").click((e) => {
                 let res = timeLineModule.extractChangedTimeline()
                 timeLineModule.changeTimeLineById(res.id,res)
