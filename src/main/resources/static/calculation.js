@@ -129,6 +129,8 @@ var timeLineModule = (function(){
     let timeLines = [];
     let fenwFeatureTree;
     let timestamp
+    let startSelected;
+    let stopSelected
 
     async function getInitPState() {
         await $.post("/videoServlet",{ remoteMethod: "getInitState"},(res)=>{
@@ -221,12 +223,12 @@ var timeLineModule = (function(){
                    }
                }
             timestamp = new Date().valueOf();
-            $( "#amount" ).val( "" + $( "#slider-range" ).slider( "values", 0 ) +
-                " of " + $( "#slider-range" ).slider( "values", 1 ) );
-            $( "#likes" ).val(timeLineModule.countLikes( $( "#slider-range" ).slider( "values", 0 ), $( "#slider-range" ).slider( "values", 1 ),$("#percent").val() ) );
-            $( "#dislikes" ).val(timeLineModule.countDisLikes( $( "#slider-range" ).slider( "values", 0 ), $( "#slider-range" ).slider( "values", 1 ),$("#percent").val() ) );
+            $( "#amount" ).val( "" + startSelected +
+                " of " + stopSelected);
+            $( "#likes" ).val(timeLineModule.countLikes( startSelected, stopSelected,$("#percent").val() ) );
+            $( "#dislikes" ).val(timeLineModule.countDisLikes( startSelected, stopSelected,$("#percent").val() ) );
             $("#comments").empty()
-            obj=timeLineModule.filterListByTime($( "#slider-range" ).slider( "values", 0 ) ,$( "#slider-range" ).slider( "values", 1 ),$("#percent").val() );
+            obj=timeLineModule.filterListByTime(startSelected ,stopSelected,$("#percent").val() );
             let html = '';
             for (let key in obj) {
                 html += '<div class="card bg-outline-info text-dark  mt-5" id='  + obj[key].id + '>';
@@ -321,12 +323,12 @@ var timeLineModule = (function(){
     }
     function addPTimeLine(timeline){
         timeLines.push(timeline);
-        $( "#amount" ).val( "" + $( "#slider-range" ).slider( "values", 0 ) +
-            " of " + $( "#slider-range" ).slider( "values", 1 ) );
-        $( "#likes" ).val(timeLineModule.countLikes( $( "#slider-range" ).slider( "values", 0 ), $( "#slider-range" ).slider( "values", 1 ),$("#percent").val() ) );
-        $( "#dislikes" ).val(timeLineModule.countDisLikes( $( "#slider-range" ).slider( "values", 0 ), $( "#slider-range" ).slider( "values", 1 ),$("#percent").val() ) );
+        $( "#amount" ).val( "" + startSelected+
+            " of " + stopSelected);
+        $( "#likes" ).val(timeLineModule.countLikes( startSelected, stopSelected,$("#percent").val() ) );
+        $( "#dislikes" ).val(timeLineModule.countDisLikes( startSelected, stopSelected,$("#percent").val() ) );
         $("#comments").empty()
-        obj=timeLineModule.filterListByTime($( "#slider-range" ).slider( "values", 0 ) ,$( "#slider-range" ).slider( "values", 1 ),$("#percent").val() );
+        obj=timeLineModule.filterListByTime(startSelected ,stopSelected);
         let html = '';
         for (let key in obj) {
             html += '<div class="card bg-outline-info text-dark  mt-5" id='  + obj[key].id + '>';
@@ -388,8 +390,8 @@ var timeLineModule = (function(){
         },
 
         extractFeatureAndUpdate: function(){
-            let start=$( "#slider-range" ).slider( "values", 0 )
-            let end=$( "#slider-range" ).slider( "values", 1 )
+            let start=startSelected
+            let end=stopSelected
             let featureNumber=$("#featureNumber").val()
             for(let i=start; i <= end; i++){
                 //+1 because we start at 1 in fenwick
@@ -398,8 +400,8 @@ var timeLineModule = (function(){
 
         },
         extractFeatures: function() {
-            let start=$( "#slider-range" ).slider( "values", 0 )
-            let end=$( "#slider-range" ).slider( "values", 1 )
+            let start=startSelected
+            let end=stopSelected
             return extractPFeatures(start+1, end+1)
         },
         extractTidslinje: function(){
@@ -410,8 +412,8 @@ var timeLineModule = (function(){
                 user:   $("#commentUser").val().trim(),
                 timestampCreated: new Date().valueOf(),
                 timestampChanged: new Date().valueOf(),
-                start: $( "#slider-range" ).slider( "values", 0 ) ,
-                end: $( "#slider-range" ).slider( "values", 1 ),
+                start: startSelected,
+                end: stopSelected,
                 text:  $("#commentComment").val().trim(),
                 like: $("#likeYes").is(':checked'),
                 dislike: $("#dislikeYes").is(':checked'),
@@ -453,12 +455,13 @@ var timeLineModule = (function(){
             updateP(timeslot+1,feature)
         },
         rangeSearch: function (){
-            let start=$( "#slider-range" ).slider( "values", 0 )
-            let end=$( "#slider-range" ).slider( "values", 1 )
+            let start=startSelected
+            let end=stopSelected
             let liste = $( "#featuresToFind" ).val().split(",")
             let res = rangeSearchP(liste,start+1,end+1)
             return [res[0]-1,res[1]-1]
-        }
+        },
+        ge
 
     }
 })();
