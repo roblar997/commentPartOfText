@@ -25,8 +25,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-@WebServlet(name = "videoServlet", value = "/videoServlet")
-public class videoServlet extends HttpServlet {
+@WebServlet(name = "textServlet", value = "/textServlet")
+public class textServlet extends HttpServlet {
 
     @EJB
     private TidslinjeDAO tidslinjeDAO;
