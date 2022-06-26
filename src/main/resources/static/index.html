@@ -29,10 +29,60 @@
 
             });
             $("#textToComment").mouseup((e)=>{
+                let startSelected = $('#textToComment')[0].selectionStart
+                let stopSelected   = $('#textToComment')[0].selectionEnd
 
-                console.log($('#textToComment')[0].selectionStart + " " + $('#textToComment')[0].selectionEnd)
-                timeLineModule.setStartSelect($('#textToComment')[0].selectionStart)
-                timeLineModule.setStopSelect( $('#textToComment')[0].selectionEnd)
+                console.log( startSelected + " " + stopSelected)
+                timeLineModule.setStartSelect(startSelected)
+                timeLineModule.setStopSelect(stopSelected)
+
+                $("#isCommentingBefore").empty();
+                $("#isCommenting").empty();
+                $("#isCommentingAfter").empty();
+
+                let htmlBefore = '<div style=    "background-color:white ; color:black">'
+                htmlBefore += String($('#textToComment')[0].value).substring(0,startSelected-1)
+                htmlBefore += "</div>";
+                $(htmlBefore).appendTo("#isCommenting")
+
+                let html = '<div style=    "background-color:black;  color:white">'
+                html += String($('#textToComment')[0].value).substring(startSelected,stopSelected)
+                html += "</div>";
+                $(html).appendTo("#isCommenting")
+
+
+                let htmlAfter = '<div style=    "background-color:white ; color:black">'
+                htmlAfter += String($('#textToComment')[0].value).substring(stopSelected,$('#textToComment')[0].value.length);
+                htmlAfter += "</div>";
+                $(htmlAfter).appendTo("#isCommenting")
+
+                $( "#amount" ).val( "" + startSelected +
+                    " of " + stopSelected);
+                $( "#likes" ).val(timeLineModule.countLikes( startSelected, stopSelected,$("#percent").val() ) );
+                $( "#dislikes" ).val(timeLineModule.countDisLikes( startSelected, stopSelected,$("#percent").val() ) );
+                $("#comments").empty()
+                obj=timeLineModule.filterListByTime(startSelected ,stopSelected,$("#percent").val() );
+                let html2 = '';
+                for (let key in obj) {
+                    html2 += '<div class="card bg-outline-info text-dark  mt-5" id='  + obj[key].id + '>';
+//
+
+                    html2 += '<div class="card-body">';
+                    html2 += '<p>' +  " <strong>id</strong>: " + obj[key].id + '</p>';
+                    html2 += '<p>' +  " <strong>user</strong>: " + obj[key].user + '</p>';
+                    html2 += '<p>' +  " <strong>timestampCreated</strong>: " + obj[key].timestampCreated + '</p>';
+                    html2 += '<p>' +  " <strong>timestampChanged</strong>: " + obj[key].timestampChanged + '</p>';
+                    html2 += '<p>' +  "<strong> text</strong>: " + obj[key].text + '</p>';
+                    html2 += '<p>' +  " <strong>like</strong>: " + obj[key].like + '</p>';
+                    html2 += '<p>' +  " <strong>dislike</strong>: " + obj[key].dislike + '</p>';
+                    html2 += '<p>' +  " <strong>deleted</strong>: " + obj[key].isdeleted + '</p>';
+                    html2 += '<button type="button" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-warning col-1 m-1 p-1">Change</button>';
+                    html2 += '<button type="button" class="btn btn-danger col-1 m-1 p-1" >Remove</button>';
+                    html2 += '</div>'
+                    html2 += '</div>'
+                }
+
+                $(html2).appendTo("#comments");
             })
             $("#changeButton").click((e) => {
                 let res = timeLineModule.extractChangedTimeline()
@@ -166,7 +216,7 @@
 
         <div>
             <p class="h3" style="margin-top: 10px" >Text to comment </p>
-                 <textarea id="textToComment" style="width:320px; height:320px; margin-top: 10px" readonly> Dette er en tekst hvor en kan kommentere på ulike deler av teksten.
+                 <textarea id="textToComment" style="; width:320px; height:320px; margin-top: 10px" readonly> Dette er en tekst hvor en kan kommentere på ulike deler av teksten.
             Ved å markere deler av teksten kan definere område en vil kommentere, og hente kommentarer
             fra.  Dette er en tekst hvor en kan kommentere på ulike deler av teksten.
             Ved å markere deler av teksten kan definere område en vil kommentere, og hente kommentarer
@@ -175,8 +225,10 @@
             fra. Dette er en tekst hvor en kan kommentere på ulike deler av teksten.
             Ved å markere deler av teksten kan definere område en vil kommentere, og hente kommentarer
             fra.</textarea>
-        </div>
+            <p class="h3" style="margin-top: 10px" >Commenting following text </p>
 
+        </div>
+        <div id="isCommenting" style="width:320px; height:220px; margin-top: 10px" readonly> </div>
         <label for="percent">Percent(%)</label>
         <input  class="form-control input-sm w-25" type="number" id="percent" value="100"></input>
         <button id ="play" class="btn btn-success col-1 m-1 p-1">
