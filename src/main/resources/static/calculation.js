@@ -223,8 +223,7 @@ var timeLineModule = (function(){
                    }
                }
             timestamp = new Date().valueOf();
-            $( "#amount" ).val( "" + startSelected +
-                " of " + stopSelected);
+
             $( "#likes" ).val(timeLineModule.countLikes( startSelected, stopSelected,$("#percent").val() ) );
             $( "#dislikes" ).val(timeLineModule.countDisLikes( startSelected, stopSelected,$("#percent").val() ) );
             $("#comments").empty()
@@ -340,8 +339,7 @@ var timeLineModule = (function(){
 
     function addPTimeLine(timeline){
         timeLines.push(timeline);
-        $( "#amount" ).val( "" + startSelected+
-            " of " + stopSelected);
+
         $( "#likes" ).val(timeLineModule.countLikes( startSelected, stopSelected,$("#percent").val() ) );
         $( "#dislikes" ).val(timeLineModule.countDisLikes( startSelected, stopSelected,$("#percent").val() ) );
         $("#comments").empty()
