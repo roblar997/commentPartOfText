@@ -133,7 +133,7 @@ var timeLineModule = (function(){
     let stopSelected
 
     async function getInitPState() {
-        await $.post("/videoServlet",{ remoteMethod: "getInitState"},(res)=>{
+        await $.post("/textServlet",{ remoteMethod: "getInitState"},(res)=>{
             timestamp = new Date().valueOf();
             this.fenwFeatureTree = new FenwFeatureTree(res.initFenwick.nmbFeatures,res.initFenwick.size)
             //this.timestamp = res.timestamp
@@ -153,7 +153,7 @@ var timeLineModule = (function(){
     async function sendTimePLine(timeline) {
 //
         await $.post({
-            url: '/videoServlet',
+            url: '/textServlet',
             data: JSON.stringify({ "remoteMethod": "addTimeLine", "timeline": timeline}),
             contentType: "application/json; charset=utf-8"
         }).done((res) => {
@@ -166,7 +166,7 @@ var timeLineModule = (function(){
         let changeTime = new Date().valueOf()
 
         await $.post({
-            url: '/videoServlet',
+            url: '/textServlet',
             data: JSON.stringify({ "remoteMethod": "removeTimeline", "id": id,"timestampChanged":changeTime}),
             contentType: "application/json; charset=utf-8"
         }).done((res) => {
@@ -178,7 +178,7 @@ var timeLineModule = (function(){
     async function changePTimeLineById(id,timeline) {
 //
         await $.post({
-            url: '/videoServlet',
+            url: '/textServlet',
             data: JSON.stringify({ "remoteMethod": "changeTimeline","timeline":timeline, "id": id}),
             contentType: "application/json; charset=utf-8"
         }).done((res) => {
@@ -197,7 +197,7 @@ var timeLineModule = (function(){
     }
     async function getPChanges() {
         await $.post({
-            url: '/videoServlet',
+            url: '/textServlet',
             data: JSON.stringify({ "remoteMethod": "getChanges", "timestamp": timestamp}),
             contentType: "application/json; charset=utf-8"
         }).done((res) => {
