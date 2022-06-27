@@ -1,12 +1,15 @@
 package com.example.demo.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
 
-//@Entity
-//@Table(name="tidslinje", schema = "schemaTest")
+@Entity
+@Table(name="tidslinje", schema = "schemaTest")
 public class Tidslinje  {
 
-   // @Id
+    @Id
     private Integer id;
     private String user;
     private Long timestampCreated;

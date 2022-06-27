@@ -10,10 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 import java.sql.PreparedStatement;
 import java.sql.Types;
 import java.util.List;
@@ -27,16 +24,18 @@ public class TidslinjeDAO {
     @Autowired
     private JdbcTemplate db;
 
-    private EntityManagerFactory emf;
+    @PersistenceContext
+    private EntityManager em;
 
     public TidslinjeDAO() {
-        //this.emf = Persistence.createEntityManagerFactory("persistence");
+
     }
 
 
     @Transactional
     public List<Tidslinje> getTidslinjer(){
-
+        String sql = "SELECT t FROM Tidslinje t";
+        TypedQuery<Tidslinje> query = em.createQuery(sql, Tidslinje.class);
       /*  EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 
@@ -52,9 +51,9 @@ public class TidslinjeDAO {
             em.close();
         }*/
 
-        String sql =  "SELECT * FROM \"schemaTest\".\"Tidslinje\" WHERE \"isdeleted\" IS False";
-        List<Tidslinje> tidslinjer = db.query(sql, new BeanPropertyRowMapper(Tidslinje.class));
-        return tidslinjer;
+        //String sql =  "SELECT * FROM \"schemaTest\".\"Tidslinje\" WHERE \"isdeleted\" IS False";
+        //List<Tidslinje> tidslinjer = db.query(sql, new BeanPropertyRowMapper(Tidslinje.class));
+        return query.getResultList();
     }
     @Transactional
     public String changeTidsline(Tidslinje tidslinje, Integer id){
