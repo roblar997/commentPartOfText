@@ -29,7 +29,7 @@ public class TidslinjeDAO {
 
     private EntityManagerFactory emf;
 
-    public TidslinjeDAO(EntityManagerFactory emf) {
+    public TidslinjeDAO() {
         //this.emf = Persistence.createEntityManagerFactory("persistence");
     }
 
