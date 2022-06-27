@@ -25,6 +25,7 @@ public class TidslinjeDAO {
     private JdbcTemplate db;
 
     @PersistenceContext
+    @Autowired
     private EntityManager em;
 
     public TidslinjeDAO() {
