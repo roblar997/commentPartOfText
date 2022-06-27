@@ -1,24 +1,35 @@
 package com.example.demo.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Objects;
 
 @Entity
-@Table(name="tidslinje", schema = "schemaTest")
+@Table(name="\"tidslinje\"", schema = "\"schemaTest\"")
 public class Tidslinje  {
 
     @Id
+    @Column(name = "\"id\"")
     private Integer id;
+    @Column(name = "\"user\"")
     private String user;
+    @Column(name = "\"timestampCreated\"")
     private Long timestampCreated;
+    @Column(name = "\"timestampChanged\"")
     private Long timestampChanged;
+    @Column(name = "\"start\"")
     private Integer start;
+    @Column(name = "\"end\"")
     private Integer end;
+    @Column(name = "\"text\"")
     private String text;
+    @Column(name = "\"like\"")
     private Boolean like;
+    @Column(name = "\"dislike\"")
     private Boolean dislike;
+    @Column(name = "\"isdeleted\"")
     private Boolean isdeleted;
 
     public Tidslinje(Integer id, String user, Long timestampCreated, Long timestampChanged, Integer start, Integer end, String text, Boolean like, Boolean dislike, Boolean isdeleted) {
