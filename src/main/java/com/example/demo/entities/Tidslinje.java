@@ -15,9 +15,9 @@ public class Tidslinje  {
     private Integer id;
     @Column(name = "\"user\"")
     private String user;
-    @Column(name = "\"timestampCreated\"")
+    @Column(name = "\"timestampcreated\"")
     private Long timestampCreated;
-    @Column(name = "\"timestampChanged\"")
+    @Column(name = "\"timestampchanged\"")
     private Long timestampChanged;
     @Column(name = "\"start\"")
     private Integer start;
