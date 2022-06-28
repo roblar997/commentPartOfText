@@ -35,8 +35,8 @@ public class TidslinjeDAO {
 
     @Transactional
     public List<Tidslinje> getTidslinjer(){
-        String sql = "SELECT t FROM Tidslinje t";
-        TypedQuery<Tidslinje> query = em.createQuery(sql, Tidslinje.class);
+        //String sql = "SELECT t FROM Tidslinje t";
+       // TypedQuery<Tidslinje> query = em.createQuery(sql, Tidslinje.class);
       /*  EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 
@@ -51,10 +51,11 @@ public class TidslinjeDAO {
         } finally {
             em.close();
         }*/
-       // String sql =  "SELECT * FROM \"schemaTest\".\"Tidslinje\" WHERE \"isdeleted\" IS False";
-      // List<Tidslinje> tidslinjer = db.query(sql, new BeanPropertyRowMapper(Tidslinje.class));
-        //return tidslinjer;
-        return query.getResultList();
+       //
+        String sql =  "SELECT * FROM \"schemaTest\".\"Tidslinje\" WHERE \"isdeleted\" IS False";
+        List<Tidslinje> tidslinjer = db.query(sql, new BeanPropertyRowMapper(Tidslinje.class));
+        return tidslinjer;
+        //return query.getResultList();
     }
     @Transactional
     public String changeTidsline(Tidslinje tidslinje, Integer id){
