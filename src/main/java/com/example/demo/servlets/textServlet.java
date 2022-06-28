@@ -52,9 +52,18 @@ public class textServlet extends HttpServlet {
              if(remoteMethod.equals("getInitState")){
                 response.setContentType("application/json");
                 Type typeInfo = new TypeToken<InitFenwickTidslinjeFeatureWrapper>() {}.getType();
+                 List<Tidslinje> tidslinjeListe = null;
+                 List<Feature>   features       = null;
+                 try {
+                    tidslinjeListe = tidslinjeDAO.getTidslinjer();
+                    features       = featureDAO.getFeatures();
+                }
+                 catch (Exception ex){
+                     out.println(ex.getMessage());
+                     out.close();
+                     return;
+                 }
 
-                List<Tidslinje> tidslinjeListe = tidslinjeDAO.getTidslinjer();
-                List<Feature>   features       = featureDAO.getFeatures();
 
                 InitFenwick initFenwick = initFenwickDAO.getFenwick();
                 InitFenwickTidslinjeFeatureWrapper wrapped = WrapperService.assembleInitFenwickTidslinjeWrapper(initFenwick,tidslinjeListe,features);
