@@ -11,25 +11,25 @@ import java.util.Objects;
 public class Tidslinje  {
 
     @Id
-    @Column(name = "\"id\"")
+    @Column(name = "id")
     private Integer id;
-    @Column(name = "\"user\"")
+    @Column(name = "user")
     private String user;
-    @Column(name = "\"timestampcreated\"")
+    @Column(name = "timestampcreated")
     private Long timestampCreated;
-    @Column(name = "\"timestampchanged\"")
+    @Column(name = "timestampchanged")
     private Long timestampChanged;
-    @Column(name = "\"start\"")
+    @Column(name = "start")
     private Integer start;
-    @Column(name = "\"end\"")
+    @Column(name = "end")
     private Integer end;
-    @Column(name = "\"text\"")
+    @Column(name = "text")
     private String text;
-    @Column(name = "\"like\"")
+    @Column(name = "like")
     private Boolean like;
-    @Column(name = "\"dislike\"")
+    @Column(name = "dislike")
     private Boolean dislike;
-    @Column(name = "\"isdeleted\"")
+    @Column(name = "isdeleted")
     private Boolean isdeleted;
 
     public Tidslinje(Integer id, String user, Long timestampCreated, Long timestampChanged, Integer start, Integer end, String text, Boolean like, Boolean dislike, Boolean isdeleted) {
