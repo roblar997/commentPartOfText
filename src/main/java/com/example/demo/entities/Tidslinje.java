@@ -33,18 +33,7 @@ public class Tidslinje  implements Serializable {
     @Column(name = "isdeleted")
     private Boolean isdeleted;
 
-    public Tidslinje(Integer id, String user, Long timestampCreated, Long timestampChanged, Integer start, Integer end, String text, Boolean like, Boolean dislike, Boolean isdeleted) {
-        this.id = id;
-        this.user = user;
-        this.timestampCreated = timestampCreated;
-        this.timestampChanged = timestampChanged;
-        this.start = start;
-        this.end = end;
-        this.text = text;
-        this.like = like;
-        this.dislike = dislike;
-        this.isdeleted = isdeleted;
-    }
+
 
     public Tidslinje() {
 
