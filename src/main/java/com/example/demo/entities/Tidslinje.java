@@ -7,7 +7,7 @@ import java.util.Objects;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-@Table(name="\"Tidslinje\"", schema = "\"schemaTest\"")
+@Table(name="\"Tidslinje\"", schema = "\"schematest\"")
 public class Tidslinje  implements Serializable {
 
     @Id
