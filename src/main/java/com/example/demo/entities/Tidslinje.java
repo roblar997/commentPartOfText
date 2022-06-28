@@ -1,17 +1,17 @@
 package com.example.demo.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name="Tidslinje", schema = "schemaTest")
 public class Tidslinje  implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")
     private Integer id;
     @Column(name = "user")
