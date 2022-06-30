@@ -89,23 +89,19 @@ public class TidslinjeDAO {
 
     @Transactional
     public String reverseDelete(Integer id, Long timestampchanged){
-          /*  EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
+        String sql = "SELECT t FROM Tidslinje t WHERE t.id=:id";
 
+        TypedQuery<Tidslinje> queryType = em.createQuery(sql, Tidslinje.class);
+        queryType.setParameter("id",id);
 
-        try {
-            tx.begin();
-            //...
-            tx.commit();
-        } catch (Throwable e) {
+        Tidslinje tidslinjen = queryType.getSingleResult();
 
-            tx.rollback();
-        } finally {
-            em.close();
-        }*/
+        if(tidslinjen != null){
+            tidslinjen.setIsdeleted(false);
+            tidslinjen.setTimestampChanged(timestampchanged);
 
-        String sql  =  "UPDATE \"schematest\".\"tidslinje\" SET \"isdeleted\"=?, \"timestampchanged\"=? WHERE \"id\"=?";
-        db.update(sql,false, timestampchanged,id);
+            em.merge(tidslinjen);
+        }
         return "OK";
 
     }
