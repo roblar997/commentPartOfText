@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
@@ -49,6 +50,7 @@ public class Tidslinje  implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "\"texttocommentid\"",updatable = false,insertable = false)
+    @JsonIgnore
     textToComment texttocommentfield;
 
     public Tidslinje(Integer id, String user, Long timestampCreated, Long timestampChanged, Integer start, Integer end, String text, Boolean like, Boolean dislike, Boolean isdeleted, Integer texttocommentid) {
