@@ -127,11 +127,17 @@ public class TidslinjeDAO {
         return "OK";
 
     }
-    @Transactional
-    public Integer addTidslinje(Tidslinje tidslinje){
 
+    public Integer addTidslinje(Tidslinje tidslinje){
+        try {
+            em.getTransaction().begin();
             em.merge(tidslinje);
-            return tidslinje.getId();
+            em.getTransaction().commit();
+        } catch (Throwable e) {
+            em.getTransaction().rollback();
+        }
+
+        return tidslinje.getId();
     }
     @Transactional
     public List<Tidslinje> getLatestChangedOrAdded(Long timestamp){

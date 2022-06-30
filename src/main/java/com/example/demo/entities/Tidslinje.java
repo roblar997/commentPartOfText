@@ -3,7 +3,6 @@ package com.example.demo.entities;
 import javax.persistence.*;
 import java.util.Objects;
 
-import static javax.persistence.GenerationType.AUTO;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -11,7 +10,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Tidslinje  {
 
     @Id
-    @GeneratedValue(strategy = AUTO)
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "\"id\"")
     private Integer id;
     @Column(name = "\"user\"")
