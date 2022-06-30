@@ -34,6 +34,9 @@ public class Tidslinje  {
     @Column(name = "\"texttocommentid\"")
     private Integer texttocommentid;
 
+    @ManyToOne
+    textToComment textToComment;
+
     public Tidslinje(Integer id, String user, Long timestampCreated, Long timestampChanged, Integer start, Integer end, String text, Boolean like, Boolean dislike, Boolean isdeleted) {
         this.id = id;
         this.user = user;
