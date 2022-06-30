@@ -129,44 +129,8 @@ public class TidslinjeDAO {
     }
     @Transactional
     public Integer addTidslinje(Tidslinje tidslinje){
-
-           /*  EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
-
-
-        try {
-            tx.begin();
-            //...
-            tx.commit();
-        } catch (Throwable e) {
-
-            tx.rollback();
-        } finally {
-            em.close();
-        }*/
-
-
-        KeyHolder keyHolder = new GeneratedKeyHolder();
-
-        String sql = "INSERT INTO \"schematest\".\"tidslinje\" (\"user\",\"timestampcreated\",\"timestampchanged\",\"start\",\"end\",\"text\",\"like\",\"dislike\",\"isdeleted\") VALUES(?,?,?,?,?,?,?,?,?)";
-
-        db.update(con -> {
-            PreparedStatement query = con.prepareStatement(sql, new String[]{"id"});
-            query.setString(1, tidslinje.getUser() );
-            query.setObject(2, tidslinje.getTimestampCreated(), Types.BIGINT);
-            query. setObject(3, tidslinje.getTimestampChanged(), Types.BIGINT);
-            query.setInt(4, tidslinje.getStart());
-            query.setInt(5,tidslinje.getEnd());
-            query.setString(6,tidslinje.getText());
-            query.setBoolean(7,tidslinje.getLike());
-            query.setBoolean(8 ,tidslinje.getDislike());
-            query.setBoolean(9 ,tidslinje.getIsdeleted());
-            return query;
-        },keyHolder);
-
-
-        Integer id = keyHolder.getKey().intValue();
-        return id;
+            em.persist(tidslinje);
+            return tidslinje.getId();
     }
     @Transactional
     public List<Tidslinje> getLatestChangedOrAdded(Long timestamp){
