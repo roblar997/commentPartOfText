@@ -64,50 +64,25 @@ public class TidslinjeDAO {
             em.merge(tidslinjen);
         }
 
-
-     /*  EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
-
-
-        try {
-            tx.begin();
-            //...
-            tx.commit();
-        } catch (Throwable e) {
-
-            tx.rollback();
-        } finally {
-            em.close();
-        }*/
-
-
-        //String sql =  "UPDATE \"schematest\".\"tidslinje\" SET \"user\"=?, \"timestampcreated\"=?, \"timestampchanged\"=?, \"start\"=?, \"end\"=?, \"text\"=?, \"like\"=?, \"dislike\"=?, \"isdeleted\"=? WHERE \"id\"=?";
-       // db.update(sql,tidslinje.getUser(),tidslinje.getTimestampCreated(),tidslinje.getTimestampChanged(),tidslinje.getStart(),tidslinje.getEnd(),tidslinje.getText(),tidslinje.getLike(),tidslinje.getDislike(),tidslinje.getIsdeleted(),id);
-
         return "OK";
 
     }
     @Transactional
     public String removeTidsline(Integer id, Long timestampchanged){
+        String sql = "SELECT t FROM Tidslinje t WHERE t.id=:id";
 
-      /*  EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
+        TypedQuery<Tidslinje> queryType = em.createQuery(sql, Tidslinje.class);
+        queryType.setParameter("id",id);
 
+        Tidslinje tidslinjen = queryType.getSingleResult();
 
-        try {
-            tx.begin();
-            //...
-            tx.commit();
-        } catch (Throwable e) {
+        if(tidslinjen != null){
+            tidslinjen.setIsdeleted(true);
+            tidslinjen.setTimestampChanged(timestampchanged);
 
-            tx.rollback();
-        } finally {
-            em.close();
-        }*/
+            em.merge(tidslinjen);
+        }
 
-
-        String sql  =  "UPDATE \"schematest\".\"tidslinje\" SET \"isdeleted\"=?, \"timestampchanged\"=? WHERE \"id\"=?";
-       db.update(sql,true, timestampchanged,id);
        return "OK";
 
     }
