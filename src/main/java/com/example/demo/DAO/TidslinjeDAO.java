@@ -78,7 +78,7 @@ public class TidslinjeDAO {
         }*/
 
 
-        String sql =  "UPDATE \"schematest\".\"Tidslinje\" SET \"user\"=?, \"timestampcreated\"=?, \"timestampchanged\"=?, \"start\"=?, \"end\"=?, \"text\"=?, \"like\"=?, \"dislike\"=?, \"isdeleted\"=? WHERE \"id\"=?";
+        String sql =  "UPDATE \"schematest\".\"tidslinje\" SET \"user\"=?, \"timestampcreated\"=?, \"timestampchanged\"=?, \"start\"=?, \"end\"=?, \"text\"=?, \"like\"=?, \"dislike\"=?, \"isdeleted\"=? WHERE \"id\"=?";
         db.update(sql,tidslinje.getUser(),tidslinje.getTimestampCreated(),tidslinje.getTimestampChanged(),tidslinje.getStart(),tidslinje.getEnd(),tidslinje.getText(),tidslinje.getLike(),tidslinje.getDislike(),tidslinje.getIsdeleted(),id);
 
         return "OK";
@@ -103,7 +103,7 @@ public class TidslinjeDAO {
         }*/
 
 
-        String sql  =  "UPDATE \"schematest\".\"Tidslinje\" SET \"isdeleted\"=?, \"timestampchanged\"=? WHERE \"id\"=?";
+        String sql  =  "UPDATE \"schematest\".\"tidslinje\" SET \"isdeleted\"=?, \"timestampchanged\"=? WHERE \"id\"=?";
        db.update(sql,true, timestampchanged,id);
        return "OK";
 
@@ -126,7 +126,7 @@ public class TidslinjeDAO {
             em.close();
         }*/
 
-        String sql  =  "UPDATE \"schematest\".\"Tidslinje\" SET \"isdeleted\"=?, \"timestampchanged\"=? WHERE \"id\"=?";
+        String sql  =  "UPDATE \"schematest\".\"tidslinje\" SET \"isdeleted\"=?, \"timestampchanged\"=? WHERE \"id\"=?";
         db.update(sql,false, timestampchanged,id);
         return "OK";
 
@@ -148,7 +148,7 @@ public class TidslinjeDAO {
             em.close();
         }*/
 
-        String sql  =  "DELETE FROM \"schematest\".\"Tidslinje\" WHERE \"isdeleted\"=?";
+        String sql  =  "DELETE FROM \"schematest\".\"tidslinje\" WHERE \"isdeleted\"=?";
         db.update(sql,true);
         return "OK";
 
@@ -174,7 +174,7 @@ public class TidslinjeDAO {
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
-        String sql = "INSERT INTO \"schematest\".\"Tidslinje\" (\"user\",\"timestampcreated\",\"timestampchanged\",\"start\",\"end\",\"text\",\"like\",\"dislike\",\"isdeleted\") VALUES(?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO \"schematest\".\"tidslinje\" (\"user\",\"timestampcreated\",\"timestampchanged\",\"start\",\"end\",\"text\",\"like\",\"dislike\",\"isdeleted\") VALUES(?,?,?,?,?,?,?,?,?)";
 
         db.update(con -> {
             PreparedStatement query = con.prepareStatement(sql, new String[]{"id"});
@@ -214,7 +214,7 @@ public class TidslinjeDAO {
 
 
         //Get newest changes
-        String sql =  "SELECT * FROM \"schematest\".\"Tidslinje\" WHERE \"timestampchanged\" >= ? ";
+        String sql =  "SELECT * FROM \"schematest\".\"tidslinje\" WHERE \"timestampchanged\" >= ? ";
         List<Tidslinje> tidslinjer = db.query(sql,new Long[]{timestamp}, new BeanPropertyRowMapper(Tidslinje.class));
         return tidslinjer;
 
@@ -238,7 +238,7 @@ public class TidslinjeDAO {
         }*/
 
 
-        String sql =  "SELECT * FROM \"schematest\".\"Tidslinje\" WHERE \"timestampchanged\" <> \"timestampcreated\" AND \"timestampchanged\" > ? ";
+        String sql =  "SELECT * FROM \"schematest\".\"tidslinje\" WHERE \"timestampchanged\" <> \"timestampcreated\" AND \"timestampchanged\" > ? ";
         List<Tidslinje> tidslinjer = db.query(sql,new Long[]{timestamp}, new BeanPropertyRowMapper(Tidslinje.class));
         return tidslinjer;
     }
@@ -261,7 +261,7 @@ public class TidslinjeDAO {
         }*/
 
 
-        String sql =  "SELECT * FROM \"schematest\".\"Tidslinje\" WHERE \"timestampcreated\" > ? ";
+        String sql =  "SELECT * FROM \"schematest\".\"tidslinje\" WHERE \"timestampcreated\" > ? ";
         List<Tidslinje> tidslinjer = db.query(sql,new Long[]{timestamp}, new BeanPropertyRowMapper(Tidslinje.class));
         return tidslinjer;
 

@@ -6,11 +6,11 @@ import java.util.Objects;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-@Table(name="\"Tidslinje\"", schema = "\"schematest\"")
+@Table(name="\"tidslinje\"", schema = "\"schematest\"")
 public class Tidslinje  {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "\"id\"")
     private Integer id;
     @Column(name = "\"user\"")
