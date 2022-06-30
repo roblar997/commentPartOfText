@@ -432,8 +432,7 @@ var timeLineModule = (function(){
                 text:  $("#commentComment").val().trim(),
                 like: $("#likeYes").is(':checked'),
                 dislike: $("#dislikeYes").is(':checked'),
-                isdeleted:false,
-                texttocomment_id: 1
+                isdeleted:false
 
             }
 
