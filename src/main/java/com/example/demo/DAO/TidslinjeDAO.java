@@ -33,14 +33,11 @@ public class TidslinjeDAO {
 
     @Transactional
     public List<Tidslinje> getTidslinjer(){
-        String sql = "DELETE FROM Tidslinje t WHERE t.id=72";
-        TypedQuery<Tidslinje> query = em.createQuery(sql, Tidslinje.class);
 
-       //String sql = "SELECT t FROM Tidslinje t WHERE t.isdeleted=False";
-      // TypedQuery<Tidslinje> query = em.createQuery(sql, Tidslinje.class);
+       String sql = "SELECT t FROM Tidslinje t WHERE t.isdeleted=False";
+       TypedQuery<Tidslinje> query = em.createQuery(sql, Tidslinje.class);
 
-      query.executeUpdate();
-      return null;
+      return query.getResultList();
     }
     @Transactional
     public String changeTidsline(Tidslinje tidslinje, Integer id){
