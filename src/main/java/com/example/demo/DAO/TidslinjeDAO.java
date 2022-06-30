@@ -130,7 +130,7 @@ public class TidslinjeDAO {
     @Transactional
     public Integer addTidslinje(Tidslinje tidslinje){
 
-            em.persist(tidslinje);
+            em.merge(tidslinje);
             return tidslinje.getId();
     }
     @Transactional
