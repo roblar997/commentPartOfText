@@ -16,7 +16,7 @@ public class textToComment {
     @Column(name = "\"text\"")
     private String text;
 
-   // @OneToMany(mappedBy = "Tidslinje", fetch = FetchType.LAZY,
-        //    cascade = CascadeType.ALL)
-   // List<Tidslinje> tidslinjer;
+     @OneToMany(mappedBy = "Tidslinje", fetch = FetchType.LAZY,
+    cascade = CascadeType.ALL)
+    List<Tidslinje> tidslinjer;
 }
