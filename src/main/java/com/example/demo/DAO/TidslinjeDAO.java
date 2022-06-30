@@ -131,6 +131,7 @@ public class TidslinjeDAO {
     public Integer addTidslinje(Tidslinje tidslinje){
 
             em.merge(tidslinje);
+            em.flush();
             return tidslinje.getId();
     }
     @Transactional
