@@ -10,7 +10,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Tidslinje  {
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "\"id\"")
     private Integer id;
     @Column(name = "\"user\"")
