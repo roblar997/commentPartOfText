@@ -33,7 +33,7 @@ public class Tidslinje  {
     private Boolean isdeleted;
 
     public Tidslinje(Integer id, String user, Long timestampCreated, Long timestampChanged, Integer start, Integer end, String text, Boolean like, Boolean dislike, Boolean isdeleted) {
-        this.id = id;
+        //this.id = id; AVOID DOING THIS
         this.user = user;
         this.timestampCreated = timestampCreated;
         this.timestampChanged = timestampChanged;
