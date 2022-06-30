@@ -5,8 +5,8 @@ import javax.persistence.*;
 import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
-@Entity
-@Table(name="\"texttocomment\"", schema = "\"schematest\"")
+//@Entity
+//@Table(name="\"texttocomment\"", schema = "\"schematest\"")
 public class textToComment {
 
     @Id
