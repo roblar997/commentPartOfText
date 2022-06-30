@@ -128,11 +128,9 @@ public class TidslinjeDAO {
 
     }
     @Transactional
-    public Integer addTidslinje(Tidslinje tidslinje){
-
+    public void addTidslinje(Tidslinje tidslinje){
             em.merge(tidslinje);
-            em.flush();
-            return tidslinje.getId();
+            return;
     }
     @Transactional
     public List<Tidslinje> getLatestChangedOrAdded(Long timestamp){

@@ -104,8 +104,8 @@ public class textServlet extends HttpServlet {
                     Tidslinje tidslinje = wrapp.getTimeline();
                     if(remoteMethod.equals("addTimeLine")){
                         response.setContentType("text/html");
-                        Integer id = tidslinjeDAO.addTidslinje(tidslinje);
-                        out.println(id);
+                        tidslinjeDAO.addTidslinje(tidslinje);
+
                         out.close();
                         return;
                     }
