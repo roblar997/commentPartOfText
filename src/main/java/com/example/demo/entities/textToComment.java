@@ -24,5 +24,5 @@ public class textToComment implements Serializable {
 
      @OneToMany(mappedBy = "texttocommentfield")
      @JsonIgnore
-     Collection<Tidslinje> tidslinjer;
+     transient  Collection<Tidslinje> tidslinjer;
 }

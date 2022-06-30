@@ -51,7 +51,7 @@ public class Tidslinje  implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "\"texttocommentid\"",updatable = false,insertable = false)
     @JsonIgnore
-    textToComment texttocommentfield;
+    transient textToComment texttocommentfield;
 
     public Tidslinje(Integer id, String user, Long timestampCreated, Long timestampChanged, Integer start, Integer end, String text, Boolean like, Boolean dislike, Boolean isdeleted, Integer texttocommentid) {
         this.id = id;
