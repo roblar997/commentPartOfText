@@ -5,8 +5,8 @@ import javax.persistence.*;
 import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
-//@Entity
-//@Table(name="\"texttocomment\"", schema = "\"schematest\"")
+@Entity
+@Table(name="\"texttocomment\"", schema = "\"schematest\"")
 public class textToComment {
 
     @Id
@@ -16,7 +16,7 @@ public class textToComment {
     @Column(name = "\"text\"")
     private String text;
 
-    @OneToMany(mappedBy = "Tidslinje", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    List<Tidslinje> tidslinjer;
+   // @OneToMany(mappedBy = "Tidslinje", fetch = FetchType.LAZY,
+        //    cascade = CascadeType.ALL)
+   // List<Tidslinje> tidslinjer;
 }
