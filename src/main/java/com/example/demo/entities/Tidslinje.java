@@ -31,6 +31,15 @@ public class Tidslinje  {
     private Boolean dislike;
     @Column(name = "\"isdeleted\"")
     private Boolean isdeleted;
+
+    public Integer getTexttocommentid() {
+        return texttocommentid;
+    }
+
+    public void setTexttocommentid(Integer texttocommentid) {
+        this.texttocommentid = texttocommentid;
+    }
+
     @Column(name = "\"texttocommentid\"")
     private Integer texttocommentid;
 
@@ -38,7 +47,7 @@ public class Tidslinje  {
     @JoinColumn(name = "\"id\"",updatable = false,insertable = false)
     textToComment texttocommentfield;
 
-    public Tidslinje(Integer id, String user, Long timestampCreated, Long timestampChanged, Integer start, Integer end, String text, Boolean like, Boolean dislike, Boolean isdeleted) {
+    public Tidslinje(Integer id, String user, Long timestampCreated, Long timestampChanged, Integer start, Integer end, String text, Boolean like, Boolean dislike, Boolean isdeleted, Integer texttocommentid) {
         this.id = id;
         this.user = user;
         this.timestampCreated = timestampCreated;
@@ -49,6 +58,7 @@ public class Tidslinje  {
         this.like = like;
         this.dislike = dislike;
         this.isdeleted = isdeleted;
+        this.texttocommentid = texttocommentid;
     }
 
     public Tidslinje() {
@@ -68,6 +78,8 @@ public class Tidslinje  {
                 ", like=" + like +
                 ", dislike=" + dislike +
                 ", isdeleted=" + isdeleted +
+                ", texttocommentid=" + texttocommentid +
+                ", texttocommentfield=" + texttocommentfield +
                 '}';
     }
 
@@ -76,12 +88,12 @@ public class Tidslinje  {
         if (this == o) return true;
         if (!(o instanceof Tidslinje)) return false;
         Tidslinje tidslinje = (Tidslinje) o;
-        return Objects.equals(id, tidslinje.id) && Objects.equals(user, tidslinje.user) && Objects.equals(timestampCreated, tidslinje.timestampCreated) && Objects.equals(timestampChanged, tidslinje.timestampChanged) && Objects.equals(start, tidslinje.start) && Objects.equals(end, tidslinje.end) && Objects.equals(text, tidslinje.text) && Objects.equals(like, tidslinje.like) && Objects.equals(dislike, tidslinje.dislike) && Objects.equals(isdeleted, tidslinje.isdeleted);
+        return Objects.equals(id, tidslinje.id) && Objects.equals(user, tidslinje.user) && Objects.equals(timestampCreated, tidslinje.timestampCreated) && Objects.equals(timestampChanged, tidslinje.timestampChanged) && Objects.equals(start, tidslinje.start) && Objects.equals(end, tidslinje.end) && Objects.equals(text, tidslinje.text) && Objects.equals(like, tidslinje.like) && Objects.equals(dislike, tidslinje.dislike) && Objects.equals(isdeleted, tidslinje.isdeleted) && Objects.equals(texttocommentid, tidslinje.texttocommentid) && Objects.equals(texttocommentfield, tidslinje.texttocommentfield);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, user, timestampCreated, timestampChanged, start, end, text, like, dislike, isdeleted);
+        return Objects.hash(id, user, timestampCreated, timestampChanged, start, end, text, like, dislike, isdeleted, texttocommentid, texttocommentfield);
     }
 
     public Integer getId() {
