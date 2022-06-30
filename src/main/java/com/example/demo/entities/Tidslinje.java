@@ -47,7 +47,6 @@ public class Tidslinje  {
     private Integer texttocommentid;
 
     @ManyToOne
-    @NotFound(action = NotFoundAction.IGNORE)
     @JoinColumn(name = "\"id\"",updatable = false,insertable = false)
     textToComment texttocommentfield;
 
