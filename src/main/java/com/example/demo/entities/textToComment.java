@@ -1,8 +1,12 @@
 package com.example.demo.entities;
 
+
+import org.hibernate.mapping.List;
+
 import javax.persistence.*;
 
-import java.util.List;
+import java.util.Collection;
+import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 @Entity
@@ -17,5 +21,5 @@ public class textToComment {
     private String text;
 
      @OneToMany(mappedBy = "tidslinje")
-    List<Tidslinje> tidslinjer;
+     Collection<Tidslinje> tidslinjer;
 }
