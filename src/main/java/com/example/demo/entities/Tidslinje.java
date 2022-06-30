@@ -4,13 +4,14 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name="\"tidslinje\"", schema = "\"schematest\"")
-public class Tidslinje  {
+public class Tidslinje  implements Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)

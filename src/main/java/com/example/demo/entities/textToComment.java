@@ -6,13 +6,14 @@ import org.hibernate.mapping.List;
 
 import javax.persistence.*;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name="\"texttocomment\"", schema = "\"schematest\"")
-public class textToComment {
+public class textToComment implements Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
