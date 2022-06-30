@@ -46,8 +46,8 @@ public class Tidslinje  {
     @Column(name = "\"texttocommentid\"")
     private Integer texttocommentid;
 
-    @ManyToOne
-    @JoinColumn(name = "\"id\"",updatable = false,insertable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "\"texttocommentid\"",updatable = false,insertable = false)
     textToComment texttocommentfield;
 
     public Tidslinje(Integer id, String user, Long timestampCreated, Long timestampChanged, Integer start, Integer end, String text, Boolean like, Boolean dislike, Boolean isdeleted, Integer texttocommentid) {
