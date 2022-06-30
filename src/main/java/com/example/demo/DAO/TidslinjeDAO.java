@@ -35,28 +35,10 @@ public class TidslinjeDAO {
 
     @Transactional
     public List<Tidslinje> getTidslinjer(){
-        //Name problem fixed (abcDef=>abc_def kinda problem) fixed, so no error. It now gives another error
-        //where it returns an empty list
 
-       String sql = "SELECT t FROM Tidslinje t";
-        TypedQuery<Tidslinje> query = em.createQuery(sql, Tidslinje.class);
-      /*  EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
+       String sql = "SELECT t FROM Tidslinje t WHERE t.isdeleted=False";
+       TypedQuery<Tidslinje> query = em.createQuery(sql, Tidslinje.class);
 
-
-        try {
-            tx.begin();
-            //...
-            tx.commit();
-        } catch (Throwable e) {
-
-            tx.rollback();
-        } finally {
-            em.close();
-        }*/
-    //  String sql =  "SELECT * FROM \"schematest\".\"Tidslinje\" WHERE \"isdeleted\" IS False";
-    //List<Tidslinje> tidslinjer = db.query(sql, new BeanPropertyRowMapper(Tidslinje.class));
-     //   return tidslinjer;
       return query.getResultList();
     }
     @Transactional
