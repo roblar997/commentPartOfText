@@ -4,14 +4,13 @@ import javax.persistence.*;
 import java.util.Objects;
 
 import static javax.persistence.GenerationType.IDENTITY;
-import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @Table(name="\"tidslinje\"", schema = "\"schematest\"")
 public class Tidslinje  {
 
     @Id
-    @GeneratedValue(strategy = SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "\"id\"")
     private Integer id;
     @Column(name = "\"user\"")
