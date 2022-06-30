@@ -21,7 +21,7 @@ public class textToComment {
     @Column(name = "\"text\"")
     private String text;
 
-     @OneToMany(mappedBy = "texttocommentid")
+     @OneToMany(mappedBy = "texttocommentfield")
      @JsonIgnore
      Collection<Tidslinje> tidslinjer;
 }

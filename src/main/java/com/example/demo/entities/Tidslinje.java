@@ -36,7 +36,7 @@ public class Tidslinje  {
 
     @ManyToOne
     @JoinColumn(name = "\"id\"")
-    textToComment textToComment;
+    textToComment texttocommentfield;
 
     public Tidslinje(Integer id, String user, Long timestampCreated, Long timestampChanged, Integer start, Integer end, String text, Boolean like, Boolean dislike, Boolean isdeleted) {
         this.id = id;
