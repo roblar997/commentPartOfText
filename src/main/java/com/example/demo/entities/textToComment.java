@@ -1,6 +1,7 @@
 package com.example.demo.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.mapping.List;
 
 import javax.persistence.*;
@@ -21,5 +22,6 @@ public class textToComment {
     private String text;
 
      @OneToMany(mappedBy = "tidslinje")
+     @JsonIgnore
      Collection<Tidslinje> tidslinjer;
 }
