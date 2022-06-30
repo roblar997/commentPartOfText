@@ -22,9 +22,6 @@ import java.util.List;
 public class TidslinjeDAO {
 
 
-    @Autowired
-    private JdbcTemplate db;
-
     @PersistenceContext
     @Autowired
     private EntityManager em;
@@ -107,23 +104,11 @@ public class TidslinjeDAO {
     }
     @Transactional
     public String eraseDeleted(){
-          /*  EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
 
+        String sql = "DELETE FROM Tidslinje t WHERE t.isdeleted=true";
 
-        try {
-            tx.begin();
-            //...
-            tx.commit();
-        } catch (Throwable e) {
-
-            tx.rollback();
-        } finally {
-            em.close();
-        }*/
-
-        String sql  =  "DELETE FROM \"schematest\".\"tidslinje\" WHERE \"isdeleted\"=?";
-        db.update(sql,true);
+        TypedQuery<Tidslinje> queryType = em.createQuery(sql, Tidslinje.class);
+        queryType.executeUpdate();
         return "OK";
 
     }
@@ -135,73 +120,37 @@ public class TidslinjeDAO {
     @Transactional
     public List<Tidslinje> getLatestChangedOrAdded(Long timestamp){
 
-        /*  EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
 
+        String sql = "SELECT t FROM Tidslinje t WHERE t.timestampChanged >= :timestamp";
 
-        try {
-            tx.begin();
-            //...
-            tx.commit();
-        } catch (Throwable e) {
+        TypedQuery<Tidslinje> queryType = em.createQuery(sql, Tidslinje.class);
+        queryType.setParameter("timestamp",timestamp);
 
-            tx.rollback();
-        } finally {
-            em.close();
-        }*/
-
-
-        //Get newest changes
-        String sql =  "SELECT * FROM \"schematest\".\"tidslinje\" WHERE \"timestampchanged\" >= ? ";
-        List<Tidslinje> tidslinjer = db.query(sql,new Long[]{timestamp}, new BeanPropertyRowMapper(Tidslinje.class));
-        return tidslinjer;
+        return queryType.getResultList();
 
     }
     @Transactional
     public List<Tidslinje> getLatestChanged(Long timestamp){
 
-       /*  EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
+        String sql = "SELECT t FROM Tidslinje t WHERE t.timestampChanged <> t.timestampCreated AND t.timestampChanged >= :timestamp";
+
+        TypedQuery<Tidslinje> queryType = em.createQuery(sql, Tidslinje.class);
+        queryType.setParameter("timestamp",timestamp);
+
+        return queryType.getResultList();
 
 
-        try {
-            tx.begin();
-            //...
-            tx.commit();
-        } catch (Throwable e) {
-
-            tx.rollback();
-        } finally {
-            em.close();
-        }*/
-
-
-        String sql =  "SELECT * FROM \"schematest\".\"tidslinje\" WHERE \"timestampchanged\" <> \"timestampcreated\" AND \"timestampchanged\" > ? ";
-        List<Tidslinje> tidslinjer = db.query(sql,new Long[]{timestamp}, new BeanPropertyRowMapper(Tidslinje.class));
-        return tidslinjer;
     }
     @Transactional
     public List<Tidslinje> getLatestAdded(Long timestamp){
 
-          /*  EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
+        String sql = "SELECT t FROM Tidslinje t WHERE  t.timestampCreated >= :timestamp";
 
+        TypedQuery<Tidslinje> queryType = em.createQuery(sql, Tidslinje.class);
+        queryType.setParameter("timestamp",timestamp);
 
-        try {
-            tx.begin();
-            //...
-            tx.commit();
-        } catch (Throwable e) {
+        return queryType.getResultList();
 
-            tx.rollback();
-        } finally {
-            em.close();
-        }*/
-
-
-        String sql =  "SELECT * FROM \"schematest\".\"tidslinje\" WHERE \"timestampcreated\" > ? ";
-        List<Tidslinje> tidslinjer = db.query(sql,new Long[]{timestamp}, new BeanPropertyRowMapper(Tidslinje.class));
-        return tidslinjer;
 
     }
 
