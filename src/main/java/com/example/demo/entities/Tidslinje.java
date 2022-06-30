@@ -31,6 +31,8 @@ public class Tidslinje  {
     private Boolean dislike;
     @Column(name = "\"isdeleted\"")
     private Boolean isdeleted;
+    @Column(name = "\"texttocommentid\"")
+    private Integer texttocommentid;
 
     public Tidslinje(Integer id, String user, Long timestampCreated, Long timestampChanged, Integer start, Integer end, String text, Boolean like, Boolean dislike, Boolean isdeleted) {
         this.id = id;
