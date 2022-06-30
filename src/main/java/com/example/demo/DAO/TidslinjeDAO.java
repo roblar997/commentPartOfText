@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.ejb.Stateless;
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaQuery;
 import java.sql.PreparedStatement;
 import java.sql.Types;
 import java.util.List;
@@ -43,6 +44,26 @@ public class TidslinjeDAO {
     }
     @Transactional
     public String changeTidsline(Tidslinje tidslinje, Integer id){
+        String sql = "SELECT t FROM Tidslinje t WHERE t.id=:id";
+
+        TypedQuery<Tidslinje> queryType = em.createQuery(sql, Tidslinje.class);
+        queryType.setParameter("id",id);
+
+        Tidslinje tidslinjen = queryType.getSingleResult();
+
+        if(tidslinjen != null){
+            tidslinjen.setIsdeleted(tidslinje.getIsdeleted());
+            tidslinjen.setTimestampChanged(tidslinje.getTimestampChanged());
+            tidslinjen.setTimestampCreated(tidslinje.getTimestampCreated());
+            tidslinjen.setStart(tidslinje.getStart());
+            tidslinjen.setEnd(tidslinje.getEnd());
+            tidslinjen.setLike(tidslinje.getLike());
+            tidslinjen.setDislike(tidslinje.getDislike());
+            tidslinjen.setText(tidslinje.getText());
+            tidslinjen.setUser(tidslinje.getUser());
+            em.merge(tidslinjen);
+        }
+
 
      /*  EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -60,8 +81,8 @@ public class TidslinjeDAO {
         }*/
 
 
-        String sql =  "UPDATE \"schematest\".\"tidslinje\" SET \"user\"=?, \"timestampcreated\"=?, \"timestampchanged\"=?, \"start\"=?, \"end\"=?, \"text\"=?, \"like\"=?, \"dislike\"=?, \"isdeleted\"=? WHERE \"id\"=?";
-        db.update(sql,tidslinje.getUser(),tidslinje.getTimestampCreated(),tidslinje.getTimestampChanged(),tidslinje.getStart(),tidslinje.getEnd(),tidslinje.getText(),tidslinje.getLike(),tidslinje.getDislike(),tidslinje.getIsdeleted(),id);
+        //String sql =  "UPDATE \"schematest\".\"tidslinje\" SET \"user\"=?, \"timestampcreated\"=?, \"timestampchanged\"=?, \"start\"=?, \"end\"=?, \"text\"=?, \"like\"=?, \"dislike\"=?, \"isdeleted\"=? WHERE \"id\"=?";
+       // db.update(sql,tidslinje.getUser(),tidslinje.getTimestampCreated(),tidslinje.getTimestampChanged(),tidslinje.getStart(),tidslinje.getEnd(),tidslinje.getText(),tidslinje.getLike(),tidslinje.getDislike(),tidslinje.getIsdeleted(),id);
 
         return "OK";
 
