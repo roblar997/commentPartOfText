@@ -1,43 +1,40 @@
 
 var textModule = (function(){
-    let texts = [];
+    let titles = [];
 
-    async function addPNewText(text) {
+    async function addPNewText(title,text) {
 
         await $.post({
             url: '/newTextServlet',
-            data: JSON.stringify({ "remoteMethod": "addText", "text": text}),
+            data: JSON.stringify({ "remoteMethod": "addText","title": title, "text": text}),
             contentType: "application/json; charset=utf-8"
         }).done((res) => {
 
         }).promise();
 
     }
-    async function getTextsFromServer() {
+    async function getTitlesFromServer() {
 
         await $.post({
             url: '/newTextServlet',
-            data: JSON.stringify({ "remoteMethod": "getTexts" }),
+            data: JSON.stringify({ "remoteMethod": "getTitles" }),
             contentType: "application/json; charset=utf-8"
         }).done((res) => {
-            for (const [key, value] of Object.entries(res)){
-
-                texts = res;
-            }
+                titles = res;
         }).promise();
 
     }
-    async  function  getPTexts(){
-        await getTextsFromServer();
-        return texts;
+    async  function  getPTitles(){
+        await getTitlesFromServer();
+        return titles;
     }
 
     return {
-        getTexts: function(){
-            return getPTexts();
+        getTitles: function(){
+            return getPTitles();
         },
-        addNewText: function (text){
-            return addPNewText(text)
+        addNewText: function (title,text){
+            return addPNewText(title,text)
         }
 
     }
