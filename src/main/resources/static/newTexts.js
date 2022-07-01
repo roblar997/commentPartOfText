@@ -1,6 +1,7 @@
 
 var textModule = (function(){
     let titles = [];
+    let text;
 
     async function addPNewText(title,text) {
 
@@ -10,6 +11,17 @@ var textModule = (function(){
             contentType: "application/json; charset=utf-8"
         }).done((res) => {
 
+        }).promise();
+
+    }
+    async function getText(title) {
+
+        await $.post({
+            url: '/newTextServlet',
+            data: JSON.stringify({ "remoteMethod": "getText","title": title}),
+            contentType: "application/json; charset=utf-8"
+        }).done((res) => {
+            text = res;
         }).promise();
 
     }
@@ -28,6 +40,10 @@ var textModule = (function(){
         await getTitlesFromServer();
         return titles;
     }
+    async  function  getPText(title){
+        await getText(title);
+        return text;
+    }
 
     return {
         getTitles: function(){
@@ -35,6 +51,9 @@ var textModule = (function(){
         },
         addNewText: function (title,text){
             return addPNewText(title,text)
+        },
+        getText: function (title){
+            return getPText(title);
         }
 
     }
