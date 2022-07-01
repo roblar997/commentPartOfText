@@ -1,4 +1,5 @@
-(function(){
+
+var textModule = (function(){
     let texts = [];
 
     async function addPNewText(text) {
