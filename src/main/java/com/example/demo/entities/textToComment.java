@@ -21,7 +21,8 @@ public class textToComment implements Serializable {
     private Integer id;
     @Column(name = "\"text\"")
     private String text;
-
+    @Column(name = "\"title\"")
+    private String title;
      @OneToMany(mappedBy = "texttocommentfield")
      @JsonIgnore
      transient  Collection<Tidslinje> tidslinjer;
