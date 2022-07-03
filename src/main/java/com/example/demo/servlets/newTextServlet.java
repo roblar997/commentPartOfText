@@ -43,6 +43,36 @@ public class newTextServlet extends HttpServlet {
                 while ((line = reader.readLine()) != null)
                     string.append(line);
             } catch (Exception e) { }
+            Boolean isTypeMethodTitleText = true;
+            methodTitleTextWrapper wrapper2 = null;
+            try{
+                wrapper2 = gson.fromJson(string.toString(),methodTitleTextWrapper.class);
+
+            }
+            catch (Exception ex){
+                isTypeMethodTitleText = false;
+
+            }
+
+            if(isTypeMethodTitleText){
+                out.println(wrapper2.toString());
+                out.close();
+            }
+            Boolean isTypeMethodTitle = true;
+
+            methodTitleWrapper wrapper = null;
+            try{
+                wrapper = gson.fromJson(string.toString(),methodTitleWrapper.class);
+
+            }
+            catch (Exception ex){
+                isTypeMethodTitle = false;
+
+            }
+            if(isTypeMethodTitle){
+                out.println(wrapper.toString());
+                out.close();
+            }
 
             Boolean isTypeMethodOnly = true;
             methodOnlyWrapper wrapp = null;
@@ -61,37 +91,9 @@ public class newTextServlet extends HttpServlet {
 
 
 
-            Boolean isTypeMethodTitle = true;
 
-            methodTitleWrapper wrapper = null;
-            try{
-                wrapper = gson.fromJson(string.toString(),methodTitleWrapper.class);
 
-            }
-            catch (Exception ex){
-                isTypeMethodTitle = false;
 
-            }
-            if(isTypeMethodTitle){
-                out.println(wrapper.toString());
-                out.close();
-            }
-
-            Boolean isTypeMethodTitleText = true;
-            methodTitleTextWrapper wrapper2 = null;
-            try{
-                wrapper2 = gson.fromJson(string.toString(),methodTitleTextWrapper.class);
-
-            }
-            catch (Exception ex){
-                isTypeMethodTitleText = false;
-
-            }
-
-            if(isTypeMethodTitleText){
-                out.println(wrapper2.toString());
-                out.close();
-            }
 
         }
     }
