@@ -150,7 +150,8 @@ public class textServlet extends HttpServlet {
                     catch (Exception ex){
 
                         out.println("ERROR 2");
-
+                        out.close();
+                        return;
 
                     }
 
