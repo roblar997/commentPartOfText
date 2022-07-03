@@ -52,9 +52,11 @@ public class newTextServlet extends HttpServlet {
             }
             catch (Exception ex){
                 isTypeMethodOnly = false;
+
             }
             if(isTypeMethodOnly){
-
+                out.println(wrapp.toString());
+                out.close();
             }
 
 
@@ -68,9 +70,11 @@ public class newTextServlet extends HttpServlet {
             }
             catch (Exception ex){
                 isTypeMethodTitle = false;
+
             }
             if(isTypeMethodTitle){
-
+                out.println(wrapper.toString());
+                out.close();
             }
 
             Boolean isTypeMethodTitleText = true;
@@ -81,10 +85,12 @@ public class newTextServlet extends HttpServlet {
             }
             catch (Exception ex){
                 isTypeMethodTitleText = false;
+
             }
 
             if(isTypeMethodTitleText){
-
+                out.println(wrapper2.toString());
+                out.close();
             }
 
         }
