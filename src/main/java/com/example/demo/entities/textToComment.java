@@ -21,6 +21,10 @@ public class textToComment implements Serializable {
     @Column(name = "\"id\"")
     private Integer id;
 
+    public textToComment() {
+
+    }
+
     @Override
     public String toString() {
         return "textToComment{" +
