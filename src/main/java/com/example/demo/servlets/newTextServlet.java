@@ -3,6 +3,8 @@ package com.example.demo.servlets;
 import com.example.demo.DAO.TidslinjeDAO;
 import com.example.demo.DAO.newTextDAO;
 import com.example.demo.wrapper.methodOnlyWrapper;
+import com.example.demo.wrapper.methodTitleTextWrapper;
+import com.example.demo.wrapper.methodTitleWrapper;
 import com.example.demo.wrapper.tidslinjeMethodWrapper;
 import com.google.gson.Gson;
 
@@ -58,10 +60,29 @@ public class newTextServlet extends HttpServlet {
 
 
             Boolean isTypeMethodTitle = true;
+
+            methodTitleWrapper wrapper = null;
+            try{
+                wrapper = gson.fromJson(string.toString(),methodTitleWrapper.class);
+
+            }
+            catch (Exception ex){
+                isTypeMethodTitle = false;
+            }
             if(isTypeMethodTitle){
 
             }
+
             Boolean isTypeMethodTitleText = true;
+            methodTitleTextWrapper wrapper2 = null;
+            try{
+                wrapper2 = gson.fromJson(string.toString(),methodTitleTextWrapper.class);
+
+            }
+            catch (Exception ex){
+                isTypeMethodTitleText = false;
+            }
+
             if(isTypeMethodTitleText){
 
             }
