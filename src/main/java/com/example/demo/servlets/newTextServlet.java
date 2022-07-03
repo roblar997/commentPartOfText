@@ -2,6 +2,8 @@ package com.example.demo.servlets;
 
 import com.example.demo.DAO.TidslinjeDAO;
 import com.example.demo.DAO.newTextDAO;
+import com.example.demo.wrapper.methodOnlyWrapper;
+import com.example.demo.wrapper.tidslinjeMethodWrapper;
 import com.google.gson.Gson;
 
 import javax.ejb.EJB;
@@ -41,9 +43,20 @@ public class newTextServlet extends HttpServlet {
             } catch (Exception e) { }
 
             Boolean isTypeMethodOnly = true;
+            methodOnlyWrapper wrapp = null;
+            try{
+                wrapp = gson.fromJson(string.toString(),methodOnlyWrapper.class);
+
+            }
+            catch (Exception ex){
+                isTypeMethodOnly = false;
+            }
             if(isTypeMethodOnly){
 
             }
+
+
+
             Boolean isTypeMethodTitle = true;
             if(isTypeMethodTitle){
 
