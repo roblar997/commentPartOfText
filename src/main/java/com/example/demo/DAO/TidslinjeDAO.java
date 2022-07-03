@@ -124,7 +124,7 @@ public class TidslinjeDAO {
         String sql = "SELECT t FROM Tidslinje t WHERE t.timestampChanged >= :timestamp";
 
         TypedQuery<Tidslinje> queryType = em.createQuery(sql, Tidslinje.class);
-        queryType.setParameter("timestamp",timestamp);
+        queryType.setParameter("timestamp",33);
 
         return queryType.getResultList();
 
