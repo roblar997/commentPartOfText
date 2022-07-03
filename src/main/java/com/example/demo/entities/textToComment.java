@@ -35,8 +35,7 @@ public class textToComment implements Serializable {
                 '}';
     }
 
-    public textToComment(Integer id, String text, String title) {
-        this.id = id;
+    public textToComment(String text, String title) {
         this.text = text;
         this.title = title;
     }

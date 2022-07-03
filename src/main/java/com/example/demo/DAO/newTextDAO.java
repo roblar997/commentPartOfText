@@ -1,6 +1,7 @@
 package com.example.demo.DAO;
 
 import com.example.demo.entities.Tidslinje;
+import com.example.demo.entities.textToComment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +19,8 @@ public class newTextDAO {
     private EntityManager em;
 
     public String addText(String title, String text){
+        textToComment textToAdd = new textToComment(text,title);
+        em.merge(textToAdd);
 
         return "OK";
     }
@@ -31,7 +34,11 @@ public class newTextDAO {
 
     public String getText(String title){
 
-        return "...";
+        String sql = "SELECT t.text FROM textToComment t WHERE t.title=:title";
+
+        TypedQuery<String> queryType = em.createQuery(sql, String.class);
+        queryType.setParameter("title",title);
+        return queryType.getSingleResult();
     }
 
 }
