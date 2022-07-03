@@ -14,7 +14,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name="\"texttocomment\"", schema = "\"schematest\"")
 public class textToComment implements Serializable {
-
+//
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "\"id\"")
