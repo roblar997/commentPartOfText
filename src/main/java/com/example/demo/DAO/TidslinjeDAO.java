@@ -119,14 +119,13 @@ public class TidslinjeDAO {
     }
     @Transactional
     public List<Tidslinje> getLatestChangedOrAdded(Long timestamp){
-        return getTidslinjer();
 
-        //String sql = "SELECT t FROM Tidslinje t WHERE t.timestampChanged >= :timestamp";
+        String sql = "SELECT t FROM Tidslinje t WHERE t.timestampChanged >= :timestamp";
 
-       // TypedQuery<Tidslinje> queryType = em.createQuery(sql, Tidslinje.class);
-     //   queryType.setParameter("timestamp",timestamp);
+        TypedQuery<Tidslinje> queryType = em.createQuery(sql, Tidslinje.class);
+        queryType.setParameter("timestamp",3);
 
-      //  return queryType.getResultList();
+        return queryType.getResultList();
 
     }
     @Transactional
