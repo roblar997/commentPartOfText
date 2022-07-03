@@ -55,9 +55,17 @@ public class newTextServlet extends HttpServlet {
             }
 
             if(isTypeMethodTitleText){
-                newTextDAO.addText(wrapper2.getTitle(),wrapper2.getText());
-                out.println("OK");
-                out.close();
+                try {
+                    newTextDAO.addText(wrapper2.getTitle(),wrapper2.getText());
+                    out.println("OK");
+                    out.close();
+                }
+                catch (Exception ex){
+                    out.println(ex.getMessage());
+                    out.close();
+                    return;
+                }
+
             }
             Boolean isTypeMethodTitle = true;
 
