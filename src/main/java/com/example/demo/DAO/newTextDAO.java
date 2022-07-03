@@ -4,6 +4,7 @@ import com.example.demo.entities.Tidslinje;
 import com.example.demo.entities.textToComment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -18,12 +19,14 @@ public class newTextDAO {
     @Autowired
     private EntityManager em;
 
+    @Transactional
     public String addText(String title, String text){
         textToComment textToAdd = new textToComment(text,title);
         em.merge(textToAdd);
 
         return "OK";
     }
+    @Transactional
     public List<String> getTitles(){
         String sql = "SELECT t.title FROM textToComment t ";
 
@@ -31,7 +34,7 @@ public class newTextDAO {
 
         return queryType.getResultList();
     }
-
+    @Transactional
     public String getText(String title){
 
         String sql = "SELECT t.text FROM textToComment t WHERE t.title=:title";
