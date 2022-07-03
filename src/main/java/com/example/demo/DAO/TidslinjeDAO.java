@@ -14,6 +14,7 @@ import javax.persistence.*;
 import javax.persistence.criteria.CriteriaQuery;
 import java.sql.PreparedStatement;
 import java.sql.Types;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -120,10 +121,12 @@ public class TidslinjeDAO {
     @Transactional
     public List<Tidslinje> getLatestChangedOrAdded(Long timestamp){
 
+        if(timestamp == null) return new ArrayList<Tidslinje>();
+
         String sql = "SELECT t FROM Tidslinje t WHERE t.timestampChanged >= :timestamp";
 
         TypedQuery<Tidslinje> queryType = em.createQuery(sql, Tidslinje.class);
-        queryType.setParameter("timestamp",3);
+        queryType.setParameter("timestamp",timestamp);
 
         return queryType.getResultList();
 
