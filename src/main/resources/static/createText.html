@@ -21,7 +21,8 @@
 
         $( async function() {
                     $("#btnAddText").click((e)=>{
-
+                        let textToAdd = textModule.extractNewText();
+                        textModule.addNewText(textToAdd);
                     });
 
                 });
