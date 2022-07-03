@@ -31,6 +31,12 @@ public class textToComment implements Serializable {
                 '}';
     }
 
+    public textToComment(Integer id, String text, String title) {
+        this.id = id;
+        this.text = text;
+        this.title = title;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
