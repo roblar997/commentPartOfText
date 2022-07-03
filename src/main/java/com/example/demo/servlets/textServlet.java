@@ -138,7 +138,7 @@ public class textServlet extends HttpServlet {
                     Type typeInfo = new TypeToken<List<tidslinjeCommandWrapper>>() {}.getType();
                     final Long timestampCopy = wrapptimestamp.getTimestamp();
                     //Type typeInfo  = new TypeToken<List<Tidslinje>>() {}.getType();
-                    try{
+                    try{//
                        List<tidslinjeCommandWrapper> tidslinjene = tidslinjeDAO.getLatestChangedOrAdded(timestampCopy).stream().map((x)-> { return WrapperService.assembletidslinjeCommandWrapper(x,timestampCopy);}).collect(Collectors.toList());
                         //List<Tidslinje> tidslinjene = tidslinjeDAO.getLatestChangedOrAdded(timestampCopy);
                         String json = gson.toJson(tidslinjene, typeInfo);
