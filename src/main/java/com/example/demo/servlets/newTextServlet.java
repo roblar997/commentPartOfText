@@ -8,7 +8,9 @@ import javax.ejb.EJB;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet(name = "newTextServlet", value = "/newTextServlet")
 public class newTextServlet extends HttpServlet {
@@ -24,6 +26,21 @@ public class newTextServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
 
+        PrintWriter out = response.getWriter();
+        if(request.getContentType().equals("application/x-www-form-urlencoded; charset=UTF-8")){
+
+        }
+        else if(request.getContentType().equals("application/json; charset=UTF-8")){
+            StringBuffer string = new StringBuffer();
+            String line = null;
+            try(BufferedReader reader = request.getReader()){
+                while ((line = reader.readLine()) != null)
+                    string.append(line);
+            } catch (Exception e) { }
+
+
+        }
     }
 }
