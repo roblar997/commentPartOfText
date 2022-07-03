@@ -50,7 +50,10 @@ var textModule = (function(){
             return getPTitles();
         },
         addNewText: function (title,text){
-            return addPNewText(title,text)
+            addPNewText(title,text).then().catch();
+        },
+        addNewText: function (newText){
+            addPNewText(newText.title,newText.text).then().catch();
         },
         getText: function (title){
             return getPText(title);
