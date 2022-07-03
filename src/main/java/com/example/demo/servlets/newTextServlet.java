@@ -72,7 +72,7 @@ public class newTextServlet extends HttpServlet {
             methodTitleWrapper wrapper = null;
             try{
                 wrapper = gson.fromJson(string.toString(),methodTitleWrapper.class);
-
+                if(wrapper.getTitle() == null) throw  new Exception("..");
             }
             catch (Exception ex){
                 isTypeMethodTitle = false;
