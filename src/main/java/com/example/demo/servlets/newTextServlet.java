@@ -40,6 +40,18 @@ public class newTextServlet extends HttpServlet {
                     string.append(line);
             } catch (Exception e) { }
 
+            Boolean isTypeMethodOnly = true;
+            if(isTypeMethodOnly){
+
+            }
+            Boolean isTypeMethodTitle = true;
+            if(isTypeMethodTitle){
+
+            }
+            Boolean isTypeMethodTitleText = true;
+            if(isTypeMethodTitleText){
+
+            }
 
         }
     }
