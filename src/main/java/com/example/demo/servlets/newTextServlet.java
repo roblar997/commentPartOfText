@@ -79,8 +79,21 @@ public class newTextServlet extends HttpServlet {
 
             }
             if(isTypeMethodTitle){
-                out.println(wrapper.toString());
-                out.close();
+
+                try {
+                    if(wrapper.getRemoteMethod().equals("getText")){
+                        out.println(newTextDAO.getText(wrapper.getTitle()));
+                        out.close();
+                    }
+
+                    return;
+                }
+                catch (Exception ex){
+                    out.println(ex.getMessage());
+                    out.close();
+                    return;
+                }
+
             }
 
             Boolean isTypeMethodOnly = true;
@@ -94,7 +107,19 @@ public class newTextServlet extends HttpServlet {
 
             }
             if(isTypeMethodOnly){
-                out.println(wrapp.toString());
+                try {
+                    if(wrapp.getRemoteMethod().equals("getTitles")){
+                        out.println(newTextDAO.getTitles().toString());
+                        out.close();
+                        return;
+                    }
+                }
+                catch (Exception ex){
+                    out.println(ex.getMessage());
+                    out.close();
+                    return;
+                }
+
                 out.close();
             }
 
