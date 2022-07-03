@@ -54,6 +54,13 @@ var textModule = (function(){
         },
         getText: function (title){
             return getPText(title);
+        },
+        extractNewText: function (){
+            let newText = {
+                title:$("#textTitle").val().trim(),
+                text: $("#textToCreate").val().trim(),
+            }
+            return newText;
         }
 
     }
