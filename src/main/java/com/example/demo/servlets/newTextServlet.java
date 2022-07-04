@@ -85,8 +85,9 @@ public class newTextServlet extends HttpServlet {
                     if(wrapper.getRemoteMethod().equals("getText")){
                         response.setContentType("application/json");
                         Type typeInfo = new TypeToken<textToComment>() {}.getType();
-
-                        out.println(newTextDAO.getText(wrapper.getTitle()));
+                        textToComment textToComment = newTextDAO.getText(wrapper.getTitle());
+                        String json = gson.toJson(textToComment, typeInfo);
+                        out.println(json);
                         out.close();
                     }
 
