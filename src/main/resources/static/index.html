@@ -34,6 +34,8 @@
                     let title=$("#selectTitles").val();
                     console.log(title);
                     let text = await textModule.getText(title);
+                    $("#textToComment").val(text.text);
+                    $("#currentTitleId").val(text.id);
                     console.log(text);
             });
 
