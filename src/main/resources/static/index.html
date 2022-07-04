@@ -22,11 +22,12 @@
 
         $( async function() {
             let titles = await textModule.getTitles();
-            let html="<select name='titlesSel'>";
+            let html="";
             titles.forEach((res)=>{
                 html+="<option value='" + res + "'>" + res + "</option>";
                });
-            html+="</select>"
+
+            $(html).appendTo("#selectTitles");
             console.log(html);
 
             $("#btnGetText").click((e)=>{
@@ -243,7 +244,7 @@
     <div>
         <div>
             <p class="h3" style="margin-top: 10px" >Text titles </p>
-            <select id="values" style="width:150px; margin-top: 10px"> </select> <br>
+            <select id="selectTitles" style="width:150px; margin-top: 10px"> </select> <br>
             <button id="btnGetText" class="btn btn-success" style="margin-top:10px">Load text</button>
          </div>
 
