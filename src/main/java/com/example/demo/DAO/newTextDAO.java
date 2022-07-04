@@ -35,11 +35,11 @@ public class newTextDAO {
         return queryType.getResultList();
     }
     @Transactional
-    public String getText(String title){
+    public textToComment getText(String title){
 
-        String sql = "SELECT t.text FROM textToComment t WHERE t.title=:title";
+        String sql = "SELECT t FROM textToComment t WHERE t.title=:title";
 
-        TypedQuery<String> queryType = em.createQuery(sql, String.class);
+        TypedQuery<textToComment> queryType = em.createQuery(sql, textToComment.class);
         queryType.setParameter("title",title);
         return queryType.getSingleResult();
     }

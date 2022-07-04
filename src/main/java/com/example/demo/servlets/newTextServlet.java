@@ -2,6 +2,7 @@ package com.example.demo.servlets;
 
 import com.example.demo.DAO.TidslinjeDAO;
 import com.example.demo.DAO.newTextDAO;
+import com.example.demo.entities.textToComment;
 import com.example.demo.wrapper.*;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -82,6 +83,9 @@ public class newTextServlet extends HttpServlet {
 
                 try {
                     if(wrapper.getRemoteMethod().equals("getText")){
+                        response.setContentType("application/json");
+                        Type typeInfo = new TypeToken<textToComment>() {}.getType();
+
                         out.println(newTextDAO.getText(wrapper.getTitle()));
                         out.close();
                     }
