@@ -22,7 +22,7 @@
 
         $( async function() {
             let titles = await textModule.getTitles();
-            Array.from(titles).forEach((res)=>console.log(res));
+            titles.forEach((res)=>console.log(res));
             $("#btnGetText").click((e)=>{
 
             });

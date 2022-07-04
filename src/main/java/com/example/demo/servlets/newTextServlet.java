@@ -2,11 +2,9 @@ package com.example.demo.servlets;
 
 import com.example.demo.DAO.TidslinjeDAO;
 import com.example.demo.DAO.newTextDAO;
-import com.example.demo.wrapper.methodOnlyWrapper;
-import com.example.demo.wrapper.methodTitleTextWrapper;
-import com.example.demo.wrapper.methodTitleWrapper;
-import com.example.demo.wrapper.tidslinjeMethodWrapper;
+import com.example.demo.wrapper.*;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import javax.ejb.EJB;
 import javax.servlet.*;
@@ -15,6 +13,8 @@ import javax.servlet.annotation.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Type;
+import java.util.List;
 
 @WebServlet(name = "newTextServlet", value = "/newTextServlet")
 public class newTextServlet extends HttpServlet {
@@ -109,7 +109,11 @@ public class newTextServlet extends HttpServlet {
             if(isTypeMethodOnly){
                 try {
                     if(wrapp.getRemoteMethod().equals("getTitles")){
-                        out.println(newTextDAO.getTitles().toString());
+                        response.setContentType("application/json");
+                        Type typeInfo = new TypeToken<List<String>>() {}.getType();
+                        List<String> titles = newTextDAO.getTitles();
+                        String json = gson.toJson(titles, typeInfo);
+                        out.println(json);
                         out.close();
                         return;
                     }
