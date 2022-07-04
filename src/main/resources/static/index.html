@@ -33,6 +33,8 @@
             $("#btnGetText").click((e)=>{
                     let title=$("#selectTitles").val();
                     console.log(title);
+                    let text = textModule.getText(title);
+                    console.log(text);
             });
 
             //timeLineModule.initFeatureTree(100,100)
