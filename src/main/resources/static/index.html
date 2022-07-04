@@ -22,7 +22,13 @@
 
         $( async function() {
             let titles = await textModule.getTitles();
-            titles.forEach((res)=>console.log(res));
+            let html="<select name='titlesSel'>";
+            titles.forEach((res)=>{
+                html+="<option value='" + res + "'>" + res + "</option>";
+               });
+            html+="</select>"
+            console.log(html);
+
             $("#btnGetText").click((e)=>{
 
             });
