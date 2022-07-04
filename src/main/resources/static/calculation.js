@@ -433,7 +433,7 @@ var timeLineModule = (function(){
                 like: $("#likeYes").is(':checked'),
                 dislike: $("#dislikeYes").is(':checked'),
                 isdeleted:false,
-                texttocommentid:1
+                texttocommentid: parseInt($("#currentTitleId").val().trim())
 
             }
 
