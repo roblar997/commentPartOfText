@@ -21,12 +21,12 @@
     <script>
 
         $( async function() {
-            $('.dropdown-item').click(function(){
-                $('.navbar div').removeClass('show');
+            let titles = await textModule.getTitles();
+            titles.forEach((res)=>console.log(res));
+            $("#btnGetText").click((e)=>{
+
             });
-            $('.single').click(function(){
-                $('.navbar div').removeClass('show');
-            });
+
             //timeLineModule.initFeatureTree(100,100)
             await timeLineModule.getInitState();
             $( "#likes" ).val( "0");
