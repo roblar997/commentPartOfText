@@ -30,10 +30,10 @@
             $(html).appendTo("#selectTitles");
             console.log(html);
 
-            $("#btnGetText").click((e)=>{
+            $("#btnGetText").click(async (e)=>{
                     let title=$("#selectTitles").val();
                     console.log(title);
-                    let text = textModule.getText(title);
+                    let text = await textModule.getText(title);
                     console.log(text);
             });
 
