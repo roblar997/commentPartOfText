@@ -161,6 +161,7 @@ var timeLineModule = (function(){
                    if(String(res[key].command)=="ADD"){
 
                        timeLines.push(res[key].tidslinje)
+                       this.fenwFeatureTree.addTimeline(res[key].tidslinje.start,res[key].tidslinje.end)
                    }
                    else if(String(res[key].command)=="CHANGE"){
 
@@ -171,6 +172,7 @@ var timeLineModule = (function(){
 
                        let index = timeLines.findIndex((x)=>{return x.id == res[key].tidslinje.id})
                        timeLines.splice(index,1)
+                       this.fenwFeatureTree.removeTimeline(res[key].tidslinje.start,res[key].tidslinje.end)
                    }
                    else {
                        console.log("ERROR--" + res[key])
