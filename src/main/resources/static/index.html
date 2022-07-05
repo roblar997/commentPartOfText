@@ -43,7 +43,7 @@
                     $("#isCommenting").empty();
                     $("#isCommentingAfter").empty();
                     $("#comments").empty()
-                    timeLineModule.initFeatureTree(100,100)
+                    timeLineModule.initFeatureTree(parseInt($("#textToComment").val().length))
                     console.log(text);
             });
 
