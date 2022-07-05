@@ -84,8 +84,8 @@ var timeLineModule = (function(){
             this.fenwFeatureTree = new FenwFeatureTree(parseInt($("#textToComment").val().length))
             //this.timestamp = res.timestamp
 
-            for (let val in res){
-                timeLines.push(val)
+            for (const [key, value] of Object.entries(res)){
+                timeLines.push(value)
             }
         }).promise();
 
