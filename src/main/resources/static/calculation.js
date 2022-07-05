@@ -225,7 +225,7 @@ var timeLineModule = (function(){
         },0.0)
     }
     function   initPFeatureTree(nmbFeatures,size){
-        this.fenwFeatureTree = new FenwFeatureTree(nmbFeatures,size)
+        this.fenwFeatureTree = new FenwFeatureTree(size)
     }
 
     function updateP(timeslot,feature){
