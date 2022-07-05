@@ -344,22 +344,6 @@ var timeLineModule = (function(){
 
             }).catch(function (err) {})
         },
-
-        extractFeatureAndUpdate: function(){
-            let start=startSelected
-            let end=stopSelected
-            let featureNumber=$("#featureNumber").val()
-            for(let i=start; i <= end; i++){
-                //+1 because we start at 1 in fenwick
-                updateP(i,featureNumber)
-            }
-
-        },
-        extractFeatures: function() {
-            let start=startSelected
-            let end=stopSelected
-            return extractPFeatures(start+1, end+1)
-        },
         extractTidslinje: function(){
 
 
@@ -408,8 +392,8 @@ var timeLineModule = (function(){
         initFeatureTree: function(size){
             initPFeatureTree(size)
         },
-        update: function(timeslot,feature){
-            updateP(timeslot+1,feature)
+        update: function(timeslot){
+            updateP(timeslot)
         },
         rangeSearch: function (){
             let start=startSelected
