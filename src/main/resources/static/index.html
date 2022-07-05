@@ -44,6 +44,11 @@
                     $("#isCommentingAfter").empty();
                     $("#comments").empty()
                     console.log(text);
+                    let html='';
+                    [...(String(text.text))].forEach((x)=>{
+                            html+="<span style='color:red'>" + x + "</span>";
+                    });
+                    $("#textDensityMap").val(html);
             });
 
             //timeLineModule.initFeatureTree(100,100)
