@@ -22,7 +22,7 @@ public class FeatureDAO {
         features.add(feature2);
         features.add(feature3);
     }
-    public List<Feature> getFeatures() {
+    public List<Feature> getFeatures(Integer texttocommentid) {
         return features;
     }
 

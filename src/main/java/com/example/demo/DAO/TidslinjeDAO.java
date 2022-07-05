@@ -33,10 +33,11 @@ public class TidslinjeDAO {
 
 
     @Transactional
-    public List<Tidslinje> getTidslinjer(){
+    public List<Tidslinje> getTidslinjer(Integer texttocommentid){
 
-       String sql = "SELECT t FROM Tidslinje t WHERE t.isdeleted=False";
+       String sql = "SELECT t FROM Tidslinje t WHERE t.isdeleted=False AND t.texttocommentid=:texttocommentid";
        TypedQuery<Tidslinje> query = em.createQuery(sql, Tidslinje.class);
+       query.setParameter("texttocommentid",texttocommentid);
 
       return query.getResultList();
     }

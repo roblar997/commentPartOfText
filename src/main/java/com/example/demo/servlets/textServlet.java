@@ -63,16 +63,16 @@ public class textServlet extends HttpServlet {
 
 
             //Safely find right class to convert to.
-            Boolean isTypemethodtexttocommentidWrapperWrapper = true;
+            Boolean isTypemethodtexttocommentidWrapper = true;
             methodtexttocommentidWrapper wrappen = null;
             try{
                 wrappen = gson.fromJson(string.toString(), methodtexttocommentidWrapper.class);
 
             }
             catch (Exception ex){
-                isTypemethodtexttocommentidWrapperWrapper = false;
+                isTypemethodtexttocommentidWrapper = false;
             }
-            if(isTypemethodtexttocommentidWrapperWrapper){
+            if(isTypemethodtexttocommentidWrapper){
 
 
               if(wrappen.getRemoteMethod().equals("getInitState")){
@@ -81,8 +81,8 @@ public class textServlet extends HttpServlet {
                 List<Tidslinje> tidslinjeListe = null;
                 List<Feature>   features       = null;
                 try {
-                    tidslinjeListe = tidslinjeDAO.getTidslinjer();
-                    features       = featureDAO.getFeatures();
+                    tidslinjeListe = tidslinjeDAO.getTidslinjer(wrappen.getTexttocommentid());
+                    features       = featureDAO.getFeatures(wrappen.getTexttocommentid());
                 }
                 catch (Exception ex){
                     out.println(ex.getMessage());
