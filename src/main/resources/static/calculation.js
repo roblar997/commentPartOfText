@@ -58,7 +58,11 @@ class FenwFeatureTree {
         update(end+1,-1);
 
     }
-
+    //Do reverse update compared to adding
+    removeTimeline(start,end){
+        update(start,-1);
+        update(end+1,1);
+    }
 
 
 
