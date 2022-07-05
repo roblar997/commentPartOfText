@@ -51,10 +51,7 @@
            // await timeLineModule.getInitState(parseInt($("#currentTitleId").val()));
             $( "#likes" ).val( "0");
             $( "#dislikes" ).val( "0");
-            $("#addFeature").click((e) => {
-                timeLineModule.extractFeatureAndUpdate()
 
-            });
             $("#textToComment").mouseup((e)=>{
                 let startSelected = $('#textToComment')[0].selectionStart
                 let stopSelected   = $('#textToComment')[0].selectionEnd
@@ -163,19 +160,6 @@
                 $(html).appendTo("#rangeToFind");
             });
 
-            $("#getFeatures").click((e) => {
-                $("#features").empty()
-                let res = timeLineModule.extractFeatures();
-                let html = '<div style="background-color:white; color:black;margin-bottom: 40px;">';
-
-                for (const [feature, value] of Object.entries(res)){
-                    html += '<span class="label label-default" style="margin-right:2px">' + value + '</span>';
-
-                }
-                html += '</div>'
-                $(html).appendTo("#features");
-                $("#features").css("background-color","white")
-            });
 
 
                 $("#addTimeline").click((e) => {
