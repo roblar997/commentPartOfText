@@ -81,7 +81,7 @@ var timeLineModule = (function(){
         }).done((res) => {
             timestamp = new Date().valueOf();
             timeLines = [];
-            this.fenwFeatureTree = new FenwFeatureTree(parseInt($("#textToComment").length))
+            this.fenwFeatureTree = new FenwFeatureTree(parseInt($("#textToComment").val().length))
             //this.timestamp = res.timestamp
 
             for (const [key, value] of Object.entries(res.tidslinjer)){
