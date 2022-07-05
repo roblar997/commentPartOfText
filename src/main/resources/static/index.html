@@ -44,10 +44,11 @@
                     $("#isCommentingAfter").empty();
                     $("#comments").empty()
                     console.log(text);
-                    let html='';
+                    let html="";
                     [...(String(text.text))].forEach((x)=>{
                             html+="<span style='color:red'>" + x + "</span>";
                     });
+                    console.log(html);
                     $("#textDensityMap").val(html);
             });
 
