@@ -37,11 +37,17 @@
                     $("#textToComment").val(String(text.text));
                     $("#currentTitleId").val(parseInt(text.id));
                     await timeLineModule.getInitState(parseInt(text.id));
+                    $( "#likes" ).val( "0");
+                    $( "#dislikes" ).val( "0");
+                    $("#isCommentingBefore").empty();
+                    $("#isCommenting").empty();
+                    $("#isCommentingAfter").empty();
+                    $("#comments").empty()
                     console.log(text);
             });
 
             //timeLineModule.initFeatureTree(100,100)
-            await timeLineModule.getInitState(parseInt($("#currentTitleId").val()));
+           // await timeLineModule.getInitState(parseInt($("#currentTitleId").val()));
             $( "#likes" ).val( "0");
             $( "#dislikes" ).val( "0");
             $("#addFeature").click((e) => {
