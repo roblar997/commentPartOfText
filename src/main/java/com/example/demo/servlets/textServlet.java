@@ -49,33 +49,8 @@ public class textServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         if(request.getContentType().equals("application/x-www-form-urlencoded; charset=UTF-8")){
             String remoteMethod = request.getParameter("remoteMethod");
-             if(remoteMethod.equals("getInitState")){
-                response.setContentType("application/json");
-                Type typeInfo = new TypeToken<InitFenwickTidslinjeFeatureWrapper>() {}.getType();
-                 List<Tidslinje> tidslinjeListe = null;
-                 List<Feature>   features       = null;
-                 try {
-                    tidslinjeListe = tidslinjeDAO.getTidslinjer();
-                    features       = featureDAO.getFeatures();
-                }
-                 catch (Exception ex){
-                     out.println(ex.getMessage());
-                     out.close();
-                     return;
-                 }
 
 
-                InitFenwick initFenwick = initFenwickDAO.getFenwick();
-                InitFenwickTidslinjeFeatureWrapper wrapped = WrapperService.assembleInitFenwickTidslinjeWrapper(initFenwick,tidslinjeListe,features);
-
-                String json = gson.toJson(wrapped, typeInfo);
-                out.println(json);
-                out.close();
-                return;
-            }
-            else {
-                out.println("elseStatement");
-            }
         }
         else if(request.getContentType().equals("application/json; charset=UTF-8")){
 
@@ -87,6 +62,43 @@ public class textServlet extends HttpServlet {
             } catch (Exception e) { }
 
 
+            //Safely find right class to convert to.
+            Boolean isTypemethodtexttocommentidWrapperWrapper = true;
+            methodtexttocommentidWrapper wrappen = null;
+            try{
+                wrappen = gson.fromJson(string.toString(), methodtexttocommentidWrapper.class);
+
+            }
+            catch (Exception ex){
+                isTypemethodtexttocommentidWrapperWrapper = false;
+            }
+            if(isTypemethodtexttocommentidWrapperWrapper){
+
+
+              if(wrappen.getRemoteMethod().equals("getInitState")){
+                response.setContentType("application/json");
+                Type typeInfo = new TypeToken<InitFenwickTidslinjeFeatureWrapper>() {}.getType();
+                List<Tidslinje> tidslinjeListe = null;
+                List<Feature>   features       = null;
+                try {
+                    tidslinjeListe = tidslinjeDAO.getTidslinjer();
+                    features       = featureDAO.getFeatures();
+                }
+                catch (Exception ex){
+                    out.println(ex.getMessage());
+                    out.close();
+                    return;
+                }
+
+
+                InitFenwick initFenwick = initFenwickDAO.getFenwick();
+                InitFenwickTidslinjeFeatureWrapper wrapped = WrapperService.assembleInitFenwickTidslinjeWrapper(initFenwick,tidslinjeListe,features);
+
+                String json = gson.toJson(wrapped, typeInfo);
+                out.println(json);
+                out.close();
+                return;
+            }}
             //Safely find right class to convert to.
             Boolean isTypetidslinjeMethodWrapper = true;
             tidslinjeMethodWrapper wrapp = null;

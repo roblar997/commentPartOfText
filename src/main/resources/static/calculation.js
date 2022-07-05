@@ -132,8 +132,12 @@ var timeLineModule = (function(){
     let startSelected;
     let stopSelected
 
-    async function getInitPState() {
-        await $.post("/textServlet",{ remoteMethod: "getInitState"},(res)=>{
+    async function getInitPState(texttocommentid) {
+        await $.post({
+            url: '/textServlet',
+            data: JSON.stringify({ "remoteMethod": "getInitState", "texttocommentid": texttocommentid}),
+            contentType: "application/json; charset=utf-8"
+        }).done((res) => {
             timestamp = new Date().valueOf();
             this.fenwFeatureTree = new FenwFeatureTree(res.initFenwick.nmbFeatures,res.initFenwick.size)
             //this.timestamp = res.timestamp
@@ -145,9 +149,9 @@ var timeLineModule = (function(){
             }
             for (const [key, value] of Object.entries(res.tidslinjer)){
                 timeLines.push(value)
-           }
-
+            }
         }).promise();
+
     }
 
     async function sendTimePLine(timeline) {
@@ -387,8 +391,8 @@ var timeLineModule = (function(){
         getTimeLine: function(commentId){
             getPTimeLine(commentId)
         } ,
-        getInitState : async function (){
-            await getInitPState().then(function (res) {
+        getInitState : async function (texttocommentid){
+            await getInitPState(texttocommentid).then(function (res) {
 
             }).catch(function (err) {})
         } ,

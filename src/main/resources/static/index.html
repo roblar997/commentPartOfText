@@ -40,7 +40,7 @@
             });
 
             //timeLineModule.initFeatureTree(100,100)
-            await timeLineModule.getInitState();
+            await timeLineModule.getInitState(parseInt($("#currentTitleId").val()));
             $( "#likes" ).val( "0");
             $( "#dislikes" ).val( "0");
             $("#addFeature").click((e) => {
