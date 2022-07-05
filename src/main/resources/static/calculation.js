@@ -64,6 +64,14 @@ class FenwFeatureTree {
         update(end+1,1);
     }
 
+    getCountingList(start,stop){
+        let res = []
+        for(let i = start; i <= stop; i++){
+            res.push(this.query(i))
+        }
+        return res;
+    }
+
 
 
 
