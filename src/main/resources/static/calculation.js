@@ -1,125 +1,66 @@
-//Fenwick tree for each meta-data (feature) to add to time-line, to add and extract meta-data to time-slots
-//
-// Conseptional idea:
-//===================
-//
-// Different part of a video can have different content. Idea is used today to group videos, by tagging
-// each video with a label or tag that says something about the content
-// Idea here is to push the tags or features into sub-parts of the video. By doing this search-engines
-// may gain the oportunity to set start and stop time to appropriate place in video, based on content
-// criterum. One may also gain the opportunity to clip out all part of the video containing this wanted feature,
-// and paste them together. Doing this against many videos, can make a effective way of searching for vido contents
 
-// Each number 0,1,2... nmbFeatures is associated with some feature. By updating f.update(timeSlot,feature) on
-// give a timeslot of a video a feature.
-//
-// To extract features, use f.queryFeatures(start,stop) to get a list of features in this time range
 class FenwFeatureTree {
 
-    constructor(nmbFeatures,size){
-        this.nmbFeatures = nmbFeatures
+    constructor(size){
         this.size = size
         this.tree = []
         for(let i = 0; i < size; i++){
-            this.tree[i] = []
-            for(let j = 0; j < size; j++){
-                this.tree[i][j] = 0
-            }
+            this.tree[i] = 0
         }
     }
 
-    update(timeSlot, feature, val){
+    update(timeSlot,val){
         if(timeSlot == 0) return //must start at 1
         while (timeSlot < this.size){
-            this.tree[feature][timeSlot] += val
+            this.tree[timeSlot] += val
             timeSlot += timeSlot & (-timeSlot)
         }
     }
-    addOne(timeSlot,feature){
-        this.update(timeSlot, feature, 1)
-    }
 
-    removeOne(timeSlot,feature){
-        this.update(timeSlot, feature, -1)
-    }
 
 
     query(timeSlot){
 
-        let returnArray = []
-        for(let j = 0; j < this.nmbFeatures; j++){
-            returnArray[j] = 0
-        }
+        let returnVal = 0;
 
         while (timeSlot > 0) {
-            for (const [feature, value] of Object.entries(returnArray)){
-                returnArray[feature] += this.tree[feature][timeSlot]
-            }
+             returnVal += this.tree[timeSlot]
             timeSlot -= timeSlot & (-timeSlot)
         }
 
-        return returnArray
+        return returnVal
 
     }
 
-    listDiff(listA, listB){
-        let retList=[]
-        for (const [feature, value] of Object.entries(listA)){
-            retList.push(listB[feature]-listA[feature])
 
-        }
-        return retList
-    }
     rangeQuery(l,r){
-        let ret = this.listDiff(this.query(l-1),this.query(r))
+        let ret = this.query(l-1) - this.query(r)
         return ret
     }
 
+    addTimeline(start,end){
+        //Inside, prefix sum adds 1 because it encounters slot=start
+        update(start,1);
 
-    extractFeatures(liste){
-        let res = []
-        for (const [feature, value] of Object.entries(liste)){
-            if(liste[feature] != 0){
-                res.push(feature)
-            }
-
-        }
-        return res
-    }
-
-    queryFeatures(l,r){
-        return this.extractFeatures(this.rangeQuery(l,r))
-    }
-
-    rangeSearch(liste,l,r){
-        let featureList = this.queryFeatures(l,r)
-        let resList = [l,r]
-
-        for (const [key, val] of Object.entries(liste)){
-
-            if(!featureList.some(x => x == val))
-                return [-1,-1]
-        }
-
-        let midtpoint = Math.floor((l+r)/2)
-
-        if(l != r)
-            resList = this.rangeSearch(liste,l,midtpoint)
-
-
-
-        if (resList.toString() === [-1,-1].toString()){
-            resList = this.rangeSearch(liste,midtpoint+1,r)
-            if(resList.toString() === [-1,-1].toString())
-                return [l,r]
-            else
-                return resList
-        }
-        else
-            return resList
-
+        //When going outisde timeline (end+1), one add -1 to remember one dont longer
+        //have added +1 when encountered start.
+        // Only going to use prefix sum to count number of timelines that I am standing on, so
+        // no range query needed
+        //
+        //--OFF TOPIC---
+        //Range query gives then prefix sum to end - prefix sum to start:
+        //NB! not needed for this class
+        // (rangequery start inside timeline, rangequery end outside timeline): (1+(-1)) - 1 = -1
+        // (rangequery start inside timeline, rangequery end inside timeline):  (1+0) - 1 = 0
+        // (rangequery start outside timeline, rangequery end outside timeline):  (1+(-1)) - 0 = 0-0 =0
+        // (rangequery start outside timeline, rangequery end inside timeline):  (1+0) - 0 = 1-0 =1
+        //Because all timelines inside follow same logic, sum becomes 0.
+        update(end+1,-1);
 
     }
+
+
+
 
 
 
@@ -140,14 +81,9 @@ var timeLineModule = (function(){
         }).done((res) => {
             timestamp = new Date().valueOf();
             timeLines = [];
-            this.fenwFeatureTree = new FenwFeatureTree(res.initFenwick.nmbFeatures,res.initFenwick.size)
+            this.fenwFeatureTree = new FenwFeatureTree(res.initFenwick.size)
             //this.timestamp = res.timestamp
 
-
-            for (const [key, value] of Object.entries(res.featureList)){
-
-                this.fenwFeatureTree.update(value.timeslot,value.featureNmb,value.val);
-            }
             for (const [key, value] of Object.entries(res.tidslinjer)){
                 timeLines.push(value)
             }

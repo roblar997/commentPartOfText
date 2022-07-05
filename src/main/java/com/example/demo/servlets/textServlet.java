@@ -1,10 +1,6 @@
 package com.example.demo.servlets;
 
-import com.example.demo.DAO.FeatureDAO;
-import com.example.demo.DAO.InitFenwickDAO;
 import com.example.demo.DAO.TidslinjeDAO;
-import com.example.demo.entities.Feature;
-import com.example.demo.entities.InitFenwick;
 import com.example.demo.entities.Tidslinje;
 import com.example.demo.wrapper.*;
 import com.example.demo.wrapperServices.WrapperService;
@@ -31,11 +27,6 @@ public class textServlet extends HttpServlet {
     @EJB
     private TidslinjeDAO tidslinjeDAO;
 
-    @EJB
-    private InitFenwickDAO initFenwickDAO;
-
-    @EJB
-    private FeatureDAO featureDAO;
 
     private Gson gson = new Gson();
 
@@ -77,12 +68,11 @@ public class textServlet extends HttpServlet {
 
               if(wrappen.getRemoteMethod().equals("getInitState")){
                 response.setContentType("application/json");
-                Type typeInfo = new TypeToken<InitFenwickTidslinjeFeatureWrapper>() {}.getType();
+                Type typeInfo = new TypeToken<List<Tidslinje>>() {}.getType();
                 List<Tidslinje> tidslinjeListe = null;
-                List<Feature>   features       = null;
+
                 try {
                     tidslinjeListe = tidslinjeDAO.getTidslinjer(wrappen.getTexttocommentid());
-                    features       = featureDAO.getFeatures(wrappen.getTexttocommentid());
                 }
                 catch (Exception ex){
                     out.println(ex.getMessage());
@@ -90,11 +80,7 @@ public class textServlet extends HttpServlet {
                     return;
                 }
 
-
-                InitFenwick initFenwick = initFenwickDAO.getFenwick();
-                InitFenwickTidslinjeFeatureWrapper wrapped = WrapperService.assembleInitFenwickTidslinjeWrapper(initFenwick,tidslinjeListe,features);
-
-                String json = gson.toJson(wrapped, typeInfo);
+                String json = gson.toJson(tidslinjeListe, typeInfo);
                 out.println(json);
                 out.close();
                 return;
