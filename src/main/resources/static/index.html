@@ -53,8 +53,12 @@
                             else if(nmbTimelines[idx] >= 16)
                               html+="<span style='background-color:yellow'>" + x + "</span>";
                             else if(nmbTimelines[idx] >= 8)
-                                html+="<span style='background-color:green'>" + x + "</span>";
+                                html+="<span style='background-color:lightyellow'>" + x + "</span>";
                             else if(nmbTimelines[idx] >= 4)
+                                html+="<span style='background-color:green'>" + x + "</span>";
+                            else if(nmbTimelines[idx] >= 2)
+                                html+="<span style='background-color:lightgreen'>" + x + "</span>";
+                            else if(nmbTimelines[idx] >= 1)
                                 html+="<span style='background-color:lightskyblue'>" + x + "</span>";
                             else
                                 html+="<span style='background-color:white'>" + x + "</span>";
