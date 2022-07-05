@@ -47,7 +47,7 @@
                     console.log(text);
                     let html="";
                     let nmbTimelines = timeLineModule.getCountingList(0,String(text.text).length);
-                    let counter=0;
+
                     [...(String(text.text))].forEach((x,idx)=>{
 
                             if(nmbTimelines[idx] >= 32)
