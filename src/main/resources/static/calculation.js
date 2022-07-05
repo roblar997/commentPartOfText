@@ -224,7 +224,7 @@ var timeLineModule = (function(){
             else              return nmbDisLike;
         },0.0)
     }
-    function   initPFeatureTree(nmbFeatures,size){
+    function   initPFeatureTree(size){
         this.fenwFeatureTree = new FenwFeatureTree(size)
     }
 
@@ -405,8 +405,8 @@ var timeLineModule = (function(){
             }).catch(function (err) { timeLineModule.getChanges(parseInt($("#currentTitleId").val()))})
 
         },
-        initFeatureTree: function(nmbFeatures,size){
-            initPFeatureTree(nmbFeatures,size)
+        initFeatureTree: function(size){
+            initPFeatureTree(size)
         },
         update: function(timeslot,feature){
             updateP(timeslot+1,feature)
