@@ -139,6 +139,7 @@ var timeLineModule = (function(){
             contentType: "application/json; charset=utf-8"
         }).done((res) => {
             timestamp = new Date().valueOf();
+            timeLines = [];
             this.fenwFeatureTree = new FenwFeatureTree(res.initFenwick.nmbFeatures,res.initFenwick.size)
             //this.timestamp = res.timestamp
 

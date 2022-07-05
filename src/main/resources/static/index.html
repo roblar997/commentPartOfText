@@ -36,6 +36,7 @@
                     let text = await textModule.getText(title);
                     $("#textToComment").val(String(text.text));
                     $("#currentTitleId").val(parseInt(text.id));
+                    await timeLineModule.getInitState(parseInt(text.id));
                     console.log(text);
             });
 
