@@ -200,10 +200,10 @@ var timeLineModule = (function(){
         let index = timeLines.findIndex((x)=>{return x.id == id})
         timeLines.splice(index,tidslinje)
     }
-    async function getPChanges() {
+    async function getPChanges(texttocommentid) {
         await $.post({
             url: '/textServlet',
-            data: JSON.stringify({ "remoteMethod": "getChanges", "timestamp": timestamp}),
+            data: JSON.stringify({ "remoteMethod": "getChanges","texttocommentid":texttocommentid, "timestamp": timestamp}),
             contentType: "application/json; charset=utf-8"
         }).done((res) => {
 
@@ -399,12 +399,12 @@ var timeLineModule = (function(){
         } ,
         sendTimeLine : async function (timeline){
             await sendTimePLine(timeline).then(function (res) {
-                timeLineModule.getChanges()
+                timeLineModule.getChanges(parseInt($("#currentTitleId").val()))
             }).catch(function (err) {})
 
         } ,
-        getChanges : async function (){
-            await getPChanges().then(function (res) {
+        getChanges : async function (texttocommentid){
+            await getPChanges(texttocommentid).then(function (res) {
 
             }).catch(function (err) {})
         },
@@ -456,17 +456,17 @@ var timeLineModule = (function(){
         },
         removeTimeLineById :  function(id) {
              removePTimeLineById(id).then(function (res) {
-                 timeLineModule.getChanges()
+                 timeLineModule.getChanges(parseInt($("#currentTitleId").val()))
 
             }).catch(function (err) {
-                 timeLineModule.getChanges()
+                 timeLineModule.getChanges(parseInt($("#currentTitleId").val()))
              });
         },
 
         changeTimeLineById : async function(id,timeline){
             await changePTimeLineById(id,timeline).then(function (res) {
-                    timeLineModule.getChanges();
-            }).catch(function (err) { timeLineModule.getChanges()})
+                    timeLineModule.getChanges(parseInt($("#currentTitleId").val()));
+            }).catch(function (err) { timeLineModule.getChanges(parseInt($("#currentTitleId").val()))})
 
         },
         initFeatureTree: function(nmbFeatures,size){

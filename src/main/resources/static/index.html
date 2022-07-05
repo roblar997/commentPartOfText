@@ -115,7 +115,7 @@
 
             });
             $("#refreshComments").click((e) => {
-               timeLineModule.getChanges()
+               timeLineModule.getChanges(parseInt($("#currentTitleId").val()))
             });
 
             $("#comments").click(async (e)=>{

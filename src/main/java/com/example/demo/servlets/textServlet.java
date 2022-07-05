@@ -128,30 +128,29 @@ public class textServlet extends HttpServlet {
                     return;
                 }
             }
-            Boolean isTypetimestampMethodWrapper = true;
-            timestampMethodWrapper wrapptimestamp = null;
+            Boolean isTypetimestampMethodtexttocommentidWrapper = true;
+            timestampMethodtexttocommentidWrapper wrapptimestamp = null;
             response.setContentType("application/json");
 
             try{
 
-                wrapptimestamp = gson.fromJson(string.toString(),timestampMethodWrapper.class);
+                wrapptimestamp = gson.fromJson(string.toString(),timestampMethodtexttocommentidWrapper.class);
 
             }
             catch (Exception ex){
-                isTypetimestampMethodWrapper = false;
-                out.println("ERROR 1");
+                isTypetimestampMethodtexttocommentidWrapper = false;
                 out.close();
                 return;
 
             }
-            if(isTypetimestampMethodWrapper){
+            if(isTypetimestampMethodtexttocommentidWrapper){
                 String remoteMethod = wrapptimestamp.getRemoteMethod();
                 if(remoteMethod.equals("getChanges")){
                     Type typeInfo = new TypeToken<List<tidslinjeCommandWrapper>>() {}.getType();
                     final Long timestampCopy = wrapptimestamp.getTimestamp();
                     //Type typeInfo  = new TypeToken<List<Tidslinje>>() {}.getType();
                     try{//
-                       List<tidslinjeCommandWrapper> tidslinjene = tidslinjeDAO.getLatestChangedOrAdded(timestampCopy).stream().map((x)-> { return WrapperService.assembletidslinjeCommandWrapper(x,timestampCopy);}).collect(Collectors.toList());
+                       List<tidslinjeCommandWrapper> tidslinjene = tidslinjeDAO.getLatestChangedOrAdded(timestampCopy,wrapptimestamp.getTexttocommentid()).stream().map((x)-> { return WrapperService.assembletidslinjeCommandWrapper(x,timestampCopy);}).collect(Collectors.toList());
                         //List<Tidslinje> tidslinjene = tidslinjeDAO.getLatestChangedOrAdded(timestampCopy);
                         String json = gson.toJson(tidslinjene, typeInfo);
                         out.println(json);

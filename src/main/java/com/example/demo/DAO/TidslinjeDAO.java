@@ -120,38 +120,39 @@ public class TidslinjeDAO {
             return;
     }
     @Transactional
-    public List<Tidslinje> getLatestChangedOrAdded(Long timestamp){
+    public List<Tidslinje> getLatestChangedOrAdded(Long timestamp, Integer texttocommentid){
 
         if(timestamp == null) return new ArrayList<Tidslinje>();
 
-        String sql = "SELECT t FROM Tidslinje t WHERE t.timestampChanged >= :timestamp";
+        String sql = "SELECT t FROM Tidslinje t WHERE t.timestampChanged >= :timestamp AND t.texttocommentid=:texttocommentid";
 
         TypedQuery<Tidslinje> queryType = em.createQuery(sql, Tidslinje.class);
         queryType.setParameter("timestamp",timestamp);
+        queryType.setParameter("texttocommentid",texttocommentid);
 
         return queryType.getResultList();
 
     }
     @Transactional
-    public List<Tidslinje> getLatestChanged(Long timestamp){
+    public List<Tidslinje> getLatestChanged(Long timestamp,Integer texttocommentid){
 
-        String sql = "SELECT t FROM Tidslinje t WHERE t.timestampChanged <> t.timestampCreated AND t.timestampChanged >= :timestamp";
+        String sql = "SELECT t FROM Tidslinje t WHERE t.timestampChanged <> t.timestampCreated AND t.timestampChanged >= :timestamp AND t.texttocommentid=:texttocommentid";
 
         TypedQuery<Tidslinje> queryType = em.createQuery(sql, Tidslinje.class);
         queryType.setParameter("timestamp",timestamp);
-
+        queryType.setParameter("texttocommentid",texttocommentid);
         return queryType.getResultList();
 
 
     }
     @Transactional
-    public List<Tidslinje> getLatestAdded(Long timestamp){
+    public List<Tidslinje> getLatestAdded(Long timestamp,Integer texttocommentid){
 
-        String sql = "SELECT t FROM Tidslinje t WHERE  t.timestampCreated >= :timestamp";
+        String sql = "SELECT t FROM Tidslinje t WHERE  t.timestampCreated >= :timestamp AND t.texttocommentid=:texttocommentid";
 
         TypedQuery<Tidslinje> queryType = em.createQuery(sql, Tidslinje.class);
         queryType.setParameter("timestamp",timestamp);
-
+        queryType.setParameter("texttocommentid",texttocommentid);
         return queryType.getResultList();
 
 
