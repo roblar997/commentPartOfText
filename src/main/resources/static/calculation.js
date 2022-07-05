@@ -152,6 +152,7 @@ var timeLineModule = (function(){
     function updateColorMap(text){
         let nmbTimelines = timeLineModule.getCountingList(0,String(text).length);
         let html="";
+        $("#textDensityMap").empty();
         [...(String(text))].forEach((x,idx)=>{
 
             if(nmbTimelines[idx] >= 32)
