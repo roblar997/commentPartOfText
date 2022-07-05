@@ -148,17 +148,7 @@
                 }
             });
 
-            $("#searchFeatures").click((e) => {
-                let res = timeLineModule.rangeSearch()
-                $("#rangeToFind").empty()
-                let html = '<div style="background-color:white; color:black;margin-bottom: 40px;"">';
 
-
-                    html += '<p>[' + res[0] + ' , ' + res[1] + ' ]</p>';
-                    html += '<div style="background-color:white; color:white">f</div>'
-
-                $(html).appendTo("#rangeToFind");
-            });
 
 
 
