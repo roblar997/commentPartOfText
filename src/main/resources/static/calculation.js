@@ -149,6 +149,29 @@ var timeLineModule = (function(){
         let index = timeLines.findIndex((x)=>{return x.id == id})
         timeLines.splice(index,tidslinje)
     }
+    function updateColorMap(text){
+        let nmbTimelines = timeLineModule.getCountingList(0,String(text).length);
+        let html="";
+        [...(String(text))].forEach((x,idx)=>{
+
+            if(nmbTimelines[idx] >= 32)
+                html+="<span style='background-color:red'>" + x + "</span>";
+            else if(nmbTimelines[idx] >= 16)
+                html+="<span style='background-color:yellow'>" + x + "</span>";
+            else if(nmbTimelines[idx] >= 8)
+                html+="<span style='background-color:lightyellow'>" + x + "</span>";
+            else if(nmbTimelines[idx] >= 4)
+                html+="<span style='background-color:green'>" + x + "</span>";
+            else if(nmbTimelines[idx] >= 2)
+                html+="<span style='background-color:lightgreen'>" + x + "</span>";
+            else if(nmbTimelines[idx] >= 1)
+                html+="<span style='background-color:lightskyblue'>" + x + "</span>";
+            else
+                html+="<span style='background-color:white'>" + x + "</span>";
+
+        });
+        $(html).appendTo("#textDensityMap");
+    }
     async function getPChanges(texttocommentid) {
         await $.post({
             url: '/textServlet',
@@ -162,6 +185,7 @@ var timeLineModule = (function(){
 
                        timeLines.push(res[key].tidslinje)
                        this.fenwFeatureTree.addTimeline(res[key].tidslinje.start,res[key].tidslinje.end)
+
                    }
                    else if(String(res[key].command)=="CHANGE"){
 
@@ -173,12 +197,15 @@ var timeLineModule = (function(){
                        let index = timeLines.findIndex((x)=>{return x.id == res[key].tidslinje.id})
                        timeLines.splice(index,1)
                        this.fenwFeatureTree.removeTimeline(res[key].tidslinje.start,res[key].tidslinje.end)
+
                    }
                    else {
                        console.log("ERROR--" + res[key])
                    }
                }
+
             timestamp = new Date().valueOf();
+            updateColorMap(String($("#textToComment").val()));
 
             $( "#likes" ).val(timeLineModule.countLikes( startSelected, stopSelected,$("#percent").val() ) );
             $( "#dislikes" ).val(timeLineModule.countDisLikes( startSelected, stopSelected,$("#percent").val() ) );
