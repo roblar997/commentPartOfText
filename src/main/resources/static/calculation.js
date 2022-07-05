@@ -40,7 +40,7 @@ class FenwFeatureTree {
 
     addTimeline(start,end){
         //Inside, prefix sum adds 1 because it encounters slot=start
-        update(start,1);
+        this.update(start,1);
 
         //When going outisde timeline (end+1), one add -1 to remember one dont longer
         //have added +1 when encountered start.
@@ -55,13 +55,13 @@ class FenwFeatureTree {
         // (rangequery start outside timeline, rangequery end outside timeline):  (1+(-1)) - 0 = 0-0 =0
         // (rangequery start outside timeline, rangequery end inside timeline):  (1+0) - 0 = 1-0 =1
         //Because all timelines inside follow same logic, sum becomes 0.
-        update(end+1,-1);
+        this.update(end+1,-1);
 
     }
     //Do reverse update compared to adding
     removeTimeline(start,end){
-        update(start,-1);
-        update(end+1,1);
+        this.update(start,-1);
+        this.update(end+1,1);
     }
 
     getCountingList(start,stop){
