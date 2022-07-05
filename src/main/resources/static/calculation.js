@@ -290,7 +290,12 @@ var timeLineModule = (function(){
     function  getPStopSelect(){
         return stopSelected;
     }
-
+    function getPCountingList(start,stop){
+        return this.fenwFeatureTree.getCountingList(start,stop)
+    }
+    function getPCount(pos){
+        return this.fenwFeatureTree.query(pos);
+    }
     function addPTimeLine(timeline){
         timeLines.push(timeline);
 
@@ -426,6 +431,12 @@ var timeLineModule = (function(){
         },
         getStopSelect: function (){
                 return getPStopSelect();
+        },
+        getCountingList: function(start,stop){
+            return getPCountingList(start,stop)
+        },
+        getCount: function(pos){
+            return getPCount(pos);
         }
 
 
