@@ -90,6 +90,12 @@ public class newTextServlet extends HttpServlet {
                         out.println(json);
                         out.close();
                     }
+                    else if(wrapper.getRemoteMethod().equals("deleteText")){
+
+                        out.println("OK");
+                        out.close();
+                    }
+
 
                     return;
                 }
