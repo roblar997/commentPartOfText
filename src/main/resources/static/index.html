@@ -140,10 +140,11 @@
             });
             $("#comments").mouseenter((e)=>{
         ;
-
-                let id = $("#comments").find("div[class='card bg-outline-info text-dark  mt-5']").attr("id")
-                let timeline = timeLineModule.getTimeLineById(id)
-                console.log(timeline);
+                if(e.target && e.target.nodeName == "DIV") {
+                    let id = e.target.id;
+                    let timeline = timeLineModule.getTimeLineById(id)
+                    console.log(timeline);
+                }
             });
             $("#comments").mouseleave((e)=>{
 
