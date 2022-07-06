@@ -25,6 +25,17 @@ var textModule = (function(){
         }).promise();
 
     }
+    async function deletePText(title) {
+
+        await $.post({
+            url: '/newTextServlet',
+            data: JSON.stringify({ "remoteMethod": "deleteText","title": title}),
+            contentType: "application/json; charset=utf-8"
+        }).done((res) => {
+
+        }).promise();
+
+    }
     async function getTitlesFromServer() {
 
         await $.post({
@@ -57,6 +68,9 @@ var textModule = (function(){
         },
         getText: function (title){
             return getPText(title);
+        },
+        deleteText: function (title){
+            deletePText(title).then().catch();
         },
         extractNewText: function (){
             let newText = {
