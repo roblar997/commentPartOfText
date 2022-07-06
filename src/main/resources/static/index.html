@@ -170,6 +170,11 @@
                      timeLineModule.removeTimeLineById(id)
 
                  }
+                 else if(e.target.innerText == "Highlight commented text"){
+                     let id = e.target.parentNode.parentNode.id;
+                     let timeline = timeLineModule.getTimeLineById(id)
+                     console.log(timeline)
+                 }
                 }
 
             });
