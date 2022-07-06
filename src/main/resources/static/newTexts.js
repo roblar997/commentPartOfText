@@ -31,8 +31,16 @@ var textModule = (function(){
             url: '/newTextServlet',
             data: JSON.stringify({ "remoteMethod": "deleteText","title": title}),
             contentType: "application/json; charset=utf-8"
-        }).done((res) => {
+        }).done(async (res) => {
+            $("#selectTitles").empty()
+            //bad solution for now. Loading everything, and not only the changes
+            let titles = await textModule.getTitles();
+            let html = "";
+            titles.forEach((res) => {
+                html += "<option value='" + res + "'>" + res + "</option>";
+            });
 
+            $(html).appendTo("#selectTitles");
         }).promise();
 
     }
