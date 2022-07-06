@@ -114,7 +114,6 @@
 //
 
                     html2 += '<div class="card-body">';
-                    html2 += '<button type="button" class="btn btn-info col-1 m-1 p-1" >Highlight commented text</button>';
                     html2 += '<p>' +  " <strong>id</strong>: " + obj[key].id + '</p>';
                     html2 += '<p>' +  " <strong>user</strong>: " + obj[key].user + '</p>';
                     html2 += '<p>' +  " <strong>timestampCreated</strong>: " + obj[key].timestampCreated + '</p>';
@@ -123,6 +122,7 @@
                     html2 += '<p>' +  " <strong>like</strong>: " + obj[key].like + '</p>';
                     html2 += '<p>' +  " <strong>dislike</strong>: " + obj[key].dislike + '</p>';
                     html2 += '<p>' +  " <strong>deleted</strong>: " + obj[key].isdeleted + '</p>';
+                    html2 += '<button type="button" class="btn btn-info col-2 m-1 p-1" >Highlight commented text</button>';
                     html2 += '<button type="button" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-warning col-1 m-1 p-1">Change</button>';
                     html2 += '<button type="button" class="btn btn-danger col-1 m-1 p-1" >Remove</button>';
                     html2 += '</div>'
@@ -196,7 +196,6 @@
                         html += '<div class="card bg-outline-info text-dark  mt-5" id='  + obj[key].id + '>';
 
                         html += '<div class="card-body">';
-                        html += '<button type="button" class="btn btn-info col-1 m-1 p-1" >Highlight commented text</button>';
                         html += '<p>' +  " <strong>id</strong>: " + obj[key].id + '</p>';
                         html += '<p>' +  " <strong>user</strong>: " + obj[key].user + '</p>';
                         html += '<p>' +  " <strong>timestampCreated</strong>: " + obj[key].timestampCreated + '</p>';
@@ -205,6 +204,7 @@
                         html += '<p>' +  " <strong>like</strong>: " + obj[key].like + '</p>';
                         html += '<p>' +  " <strong>dislike</strong>: " + obj[key].dislike + '</p>';
                         html += '<p>' +  " <strong>deleted</strong>: " + obj[key].isdeleted + '</p>';
+                        html += '<button type="button" class="btn btn-info col-2 m-1 p-1" >Highlight commented text</button>';
                         html += '<button type="button" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-warning col-1 m-1 p-1">Change</button>';
                         html += '<button type="button" class="btn btn-danger col-1 m-1 p-1" >Remove</button>';
                         html += '</div>'
