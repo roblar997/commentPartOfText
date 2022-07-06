@@ -143,7 +143,7 @@
                 while(target !== undefined &&  target.parentNode !== undefined && target.parentNode.id != "comments")
                     target = e.parentNode;
 
-                if(target && target == "DIV" && target.parentNode.id=="comments") {
+                if(target && target.nodeName == "DIV" && target.parentNode.id=="comments") {
                     let id = target.id;
                     let timeline = timeLineModule.getTimeLineById(id)
                     console.log(timeline);
@@ -156,7 +156,7 @@
                 while(target !== undefined && target.parentNode !== undefined && target.parentNode.id != "comments")
                    target = e.parentNode;
 
-                if(target && target == "DIV" && target.parentNode.id=="comments") {
+                if(target && target.nodeName == "DIV" && target.parentNode.id=="comments") {
                     console.log("leaving");
                 }
 
