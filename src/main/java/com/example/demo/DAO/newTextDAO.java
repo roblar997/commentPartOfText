@@ -35,6 +35,52 @@ public class newTextDAO {
         return queryType.getResultList();
     }
     @Transactional
+    public String removeTextToComment(String title){
+        String sql = "SELECT t FROM textToComment t WHERE t.title=:title";
+
+        TypedQuery<textToComment> queryType = em.createQuery(sql, textToComment.class);
+        queryType.setParameter("title",title);
+
+        textToComment textToComment = queryType.getSingleResult();
+
+        if(textToComment != null){
+            //textToComment.setIsdeleted(true);
+
+            em.merge(textToComment);
+        }
+
+        return "OK";
+
+    }
+
+    @Transactional
+    public String reverseDelete(String title){
+        String sql = "SELECT t FROM textToComment t WHERE t.title=:title";
+
+        TypedQuery<textToComment> queryType = em.createQuery(sql, textToComment.class);
+        queryType.setParameter("title",title);
+
+        textToComment textToComment = queryType.getSingleResult();
+
+        if(textToComment != null){
+            //textToComment.setIsdeleted(false);
+
+            em.merge(textToComment);
+        }
+        return "OK";
+
+    }
+    @Transactional
+    public String eraseDeleted(){
+
+        //String sql = "DELETE FROM textToComment t WHERE t.isdeleted=true";
+        String sql="";
+        TypedQuery<textToComment> queryType = em.createQuery(sql, textToComment.class);
+        queryType.executeUpdate();
+        return "OK";
+
+    }
+    @Transactional
     public textToComment getText(String title){
 
         String sql = "SELECT t FROM textToComment t WHERE t.title=:title";
