@@ -25,32 +25,21 @@ public class textToComment implements Serializable {
 
     }
 
-    @Override
-    public String toString() {
-        return "textToComment{" +
-                "id=" + id +
-                ", text='" + text + '\'' +
-                ", title='" + title + '\'' +
-                ", tidslinjer=" + tidslinjer +
-                '}';
-    }
 
-    public textToComment(String text, String title) {
-        this.text = text;
-        this.title = title;
-    }
+
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof textToComment)) return false;
         textToComment that = (textToComment) o;
-        return Objects.equals(id, that.id) && Objects.equals(text, that.text) && Objects.equals(title, that.title) && Objects.equals(tidslinjer, that.tidslinjer);
+        return Objects.equals(id, that.id) && Objects.equals(text, that.text) && Objects.equals(title, that.title) && Objects.equals(isdeleted, that.isdeleted);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, text, title, tidslinjer);
+        return Objects.hash(id, text, title, isdeleted);
     }
 
     public Integer getId() {
@@ -67,6 +56,20 @@ public class textToComment implements Serializable {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public textToComment(String text, String title) {
+        this.text = text;
+        this.title = title;
+        this.isdeleted = false;
+    }
+
+    public Boolean getIsdeleted() {
+        return isdeleted;
+    }
+
+    public void setIsdeleted(Boolean isdeleted) {
+        this.isdeleted = isdeleted;
     }
 
     public String getTitle() {

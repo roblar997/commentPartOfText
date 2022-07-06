@@ -28,7 +28,7 @@ public class newTextDAO {
     }
     @Transactional
     public List<String> getTitles(){
-        String sql = "SELECT t.title FROM textToComment t ";
+        String sql = "SELECT t.title FROM textToComment t WHERE t.isdeleted=False ";
 
         TypedQuery<String> queryType = em.createQuery(sql, String.class);
 
@@ -44,7 +44,7 @@ public class newTextDAO {
         textToComment textToComment = queryType.getSingleResult();
 
         if(textToComment != null){
-            //textToComment.setIsdeleted(true);
+            textToComment.setIsdeleted(true);
 
             em.merge(textToComment);
         }
@@ -63,7 +63,7 @@ public class newTextDAO {
         textToComment textToComment = queryType.getSingleResult();
 //
         if(textToComment != null){
-            //textToComment.setIsdeleted(false);
+            textToComment.setIsdeleted(false);
 
             em.merge(textToComment);
         }
@@ -73,8 +73,8 @@ public class newTextDAO {
     @Transactional
     public String eraseDeleted(){
 
-        //String sql = "DELETE FROM textToComment t WHERE t.isdeleted=true";
-        String sql="";
+        String sql = "DELETE FROM textToComment t WHERE t.isdeleted=true";
+
         TypedQuery<textToComment> queryType = em.createQuery(sql, textToComment.class);
         queryType.executeUpdate();
         return "OK";
