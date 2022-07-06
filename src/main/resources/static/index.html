@@ -85,20 +85,20 @@
                 $("#isCommenting").empty();
 
 
-                let htmlBefore = '<div style=    "background-color:white ; color:black">'
+                let htmlBefore = '<span style=    "background-color:white ; color:black">'
                 htmlBefore += String($('#textToComment')[0].value).substring(0,startSelected-1)
-                htmlBefore += "</div>";
+                htmlBefore += "</span>";
                 $(htmlBefore).appendTo("#isCommenting")
 
-                let html = '<div style=    "background-color:lightskyblue;  color:black">'
+                let html = '<span style=    "background-color:lightskyblue;  color:black">'
                 html += String($('#textToComment')[0].value).substring(startSelected,stopSelected)
-                html += "</div>";
+                html += "</span>";
                 $(html).appendTo("#isCommenting")
 
 
-                let htmlAfter = '<div style=    "background-color:white ; color:black">'
+                let htmlAfter = '<span style=    "background-color:white ; color:black">'
                 htmlAfter += String($('#textToComment')[0].value).substring(stopSelected,$('#textToComment')[0].value.length);
-                htmlAfter += "</div>";
+                htmlAfter += "</span>";
                 $(htmlAfter).appendTo("#isCommenting")
 
 
@@ -177,20 +177,20 @@
                      let start = parseInt(timeline.start)
                      let end = parseInt(timeline.end)
 
-                     let htmlBefore = '<div style=    "background-color:white ; color:black">'
+                     let htmlBefore = '<span style=    "background-color:white ; color:black">'
                      htmlBefore += String($('#textToComment')[0].value).substring(0,start-1)
-                     htmlBefore += "</div>";
+                     htmlBefore += "</span>";
                      $(htmlBefore).appendTo("#commentHighlight")
 
-                     let html = '<div style=    "background-color:lightskyblue;  color:black">'
+                     let html = '<span style=    "background-color:lightskyblue;  color:black">'
                      html += String($('#textToComment')[0].value).substring(start,end)
-                     html += "</div>";
+                     html += "</span>";
                      $(html).appendTo("#commentHighlight")
 
 
-                     let htmlAfter = '<div style=    "background-color:white ; color:black">'
+                     let htmlAfter = '<span style=    "background-color:white ; color:black">'
                      htmlAfter += String($('#textToComment')[0].value).substring(end,$('#textToComment')[0].value.length);
-                     htmlAfter += "</div>";
+                     htmlAfter += "</span>";
                      $(htmlAfter).appendTo("#commentHighlight")
 
                  }
