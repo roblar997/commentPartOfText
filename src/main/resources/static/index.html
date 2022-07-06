@@ -138,16 +138,18 @@
             $("#refreshComments").click((e) => {
                timeLineModule.getChanges(parseInt($("#currentTitleId").val()))
             });
-            $("#comments > div").first().mouseenter((e)=>{
-
+            $("#comments").mouseenter((e)=>{
+                if(e.target && e.target.nodeName == "DIV" && e.target.parentNode.id=="comments") {
                     let id = e.target.id;
                     let timeline = timeLineModule.getTimeLineById(id)
                     console.log(timeline);
+                }
 
             });
-            $("#comments  > div").first().mouseleave((e)=>{
-
-                console.log("leaving");
+            $("#comments").mouseleave((e)=>{
+                if(e.target && e.target.nodeName == "DIV" && e.target.parentNode.id=="comments") {
+                    console.log("leaving");
+                }
             });
 
             $("#comments").click(async (e)=>{
