@@ -218,6 +218,7 @@ var timeLineModule = (function(){
 //
 
                 html += '<div class="card-body">';
+                html += '<button type="button" class="btn btn-info col-1 m-1 p-1" >Highlight commented text</button>';
                 html += '<p>' +  " <strong>id</strong>: " + obj[key].id + '</p>';
                 html += '<p>' +  " <strong>user</strong>: " + obj[key].user + '</p>';
                 html += '<p>' +  " <strong>timestampCreated</strong>: " + obj[key].timestampCreated + '</p>';
@@ -338,6 +339,7 @@ var timeLineModule = (function(){
             html += '<div class="card bg-outline-info text-dark  mt-5" id='  + obj[key].id + '>';
 
             html += '<div class="card-body">';
+            html += '<button type="button" class="btn btn-info col-1 m-1 p-1" >Highlight commented text</button>';
             html += '<p>' +  " <strong>id</strong>: " + obj[key].id + '</p>';
             html += '<p>' +  " <strong>user</strong>: " + obj[key].user + '</p>';
             html += '<p>' +  " <strong>timestampCreated</strong>: " + obj[key].timestampCreated + '</p>';
