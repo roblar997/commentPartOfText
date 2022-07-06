@@ -139,7 +139,9 @@
                timeLineModule.getChanges(parseInt($("#currentTitleId").val()))
             });
             $("#comments").mouseenter((e)=>{
-                let id = e.target.parentNode.parentNode.id;
+        ;
+
+                let id = $("#comments").find("div[class='card bg-outline-info text-dark  mt-5']").attr("id")
                 let timeline = timeLineModule.getTimeLineById(id)
                 console.log(timeline);
             });
