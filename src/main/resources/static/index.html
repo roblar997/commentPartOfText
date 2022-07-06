@@ -138,14 +138,14 @@
             $("#refreshComments").click((e) => {
                timeLineModule.getChanges(parseInt($("#currentTitleId").val()))
             });
-            $("#comments > div")[0].mouseenter((e)=>{
+            $("#comments > div").first().mouseenter((e)=>{
 
                     let id = e.target.id;
                     let timeline = timeLineModule.getTimeLineById(id)
                     console.log(timeline);
 
             });
-            $("#comments  > div")[0].mouseleave((e)=>{
+            $("#comments  > div").first().mouseleave((e)=>{
 
                 console.log("leaving");
             });
