@@ -30,6 +30,7 @@
 
             $("#deleteText").click(async (e)=>{
                 let title=$("#selectTitles").val();
+                textModule.deleteText(String(title))
                 console.log(title);
             });
         });

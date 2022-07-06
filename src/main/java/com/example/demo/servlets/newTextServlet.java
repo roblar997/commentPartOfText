@@ -91,8 +91,15 @@ public class newTextServlet extends HttpServlet {
                         out.close();
                     }
                     else if(wrapper.getRemoteMethod().equals("deleteText")){
+                        try{
+                            newTextDAO.removeTextToComment(wrapper.getTitle());
+                        }
+                        catch (Exception ex){
+                            out.println(ex.getMessage());
+                            out.close();
+                            return;
+                        }
 
-                        out.println("OK");
                         out.close();
                     }
 
