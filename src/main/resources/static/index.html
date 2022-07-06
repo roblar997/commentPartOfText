@@ -140,13 +140,12 @@
             });
             $("#comments > div")[0].mouseenter((e)=>{
 
-                if(e.target && e.target.nodeName == "DIV") {
                     let id = e.target.id;
                     let timeline = timeLineModule.getTimeLineById(id)
                     console.log(timeline);
-                }
+
             });
-            $("comments > div")[0].mouseleave((e)=>{
+            $("#comments  > div")[0].mouseleave((e)=>{
 
                 console.log("leaving");
             });
