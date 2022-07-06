@@ -183,7 +183,7 @@
                      htmlBefore += "</div>";
                      $(htmlBefore).appendTo("#commentHighlight")
 
-                     let html = '<div style=    "background-color:greenyellow;  color:white">'
+                     let html = '<div style=    "background-color:lightskyblue;  color:black">'
                      html += String($('#textToComment')[0].value).substring(start,end)
                      html += "</div>";
                      $(html).appendTo("#commentHighlight")
@@ -316,7 +316,6 @@
         </div>
         <p class="h3" style="margin-top: 10px" >Commenting following text </p>
         <div id="isCommenting" style="width:320px; height:220px; margin-top: 10px" readonly> </div>
-        <div id="commentHighlight" style="width:320px; height:220px; margin-top: 10px" readonly> </div>
 
 
     </div>
@@ -325,6 +324,9 @@
 
 
         <p class="h3" >Comments       <i class="fa fa-refresh m-1" id="refreshComments" ></i></p>
+        <p class="h3" style="margin-top: 10px" >Is a comment of following </p>
+        <div id="commentHighlight" style="width:320px; height:220px; margin-top: 10px" readonly> </div>
+
         <div id="comments" class="container"></div>
 
         <section id="kommentar">
