@@ -139,12 +139,10 @@
                timeLineModule.getChanges(parseInt($("#currentTitleId").val()))
             });
             $("#comments").mouseenter((e)=>{
-                let target = e.target;
-                while(target !== undefined &&  target.parentNode !== undefined && target.parentNode.id != "comments")
-                    target = e.parentNode;
 
-                if(target && target.nodeName == "DIV" && target.parentNode.id=="comments") {
-                    let id = target.id;
+
+                if(e.target && e.target.nodeName == "DIV" && e.target.parentNode.id=="comments") {
+                    let id = e.target.id;
                     let timeline = timeLineModule.getTimeLineById(id)
                     console.log(timeline);
                 }
@@ -152,11 +150,10 @@
 
             });
             $("#comments").mouseleave((e)=>{
-                let target = e.target;
-                while(target !== undefined && target.parentNode !== undefined && target.parentNode.id != "comments")
-                   target = e.parentNode;
 
-                if(target && target.nodeName == "DIV" && target.parentNode.id=="comments") {
+
+
+                if(e.target && e.target.nodeName == "DIV" && e.target.parentNode.id=="comments") {
                     console.log("leaving");
                 }
 
