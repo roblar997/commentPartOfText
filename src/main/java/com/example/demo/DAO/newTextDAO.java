@@ -61,7 +61,7 @@ public class newTextDAO {
         queryType.setParameter("title",title);
 
         textToComment textToComment = queryType.getSingleResult();
-
+//
         if(textToComment != null){
             //textToComment.setIsdeleted(false);
 
