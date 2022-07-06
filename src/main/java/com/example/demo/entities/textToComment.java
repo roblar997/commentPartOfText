@@ -81,7 +81,11 @@ public class textToComment implements Serializable {
     private String text;
     @Column(name = "\"title\"")
     private String title;
-     @OneToMany(mappedBy = "texttocommentfield")
+    @Column(name = "\"isdeleted\"")
+    private Boolean isdeleted;
+
+
+    @OneToMany(mappedBy = "texttocommentfield")
      @JsonIgnore
      transient  Collection<Tidslinje> tidslinjer;
 }
