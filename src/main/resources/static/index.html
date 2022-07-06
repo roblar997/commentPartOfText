@@ -139,21 +139,27 @@
                timeLineModule.getChanges(parseInt($("#currentTitleId").val()))
             });
             $("#comments").mouseenter((e)=>{
-                if(e.target && e.target.nodeName == "DIV" && e.target.parentNode.id=="comments") {
-                    let id = e.target.id;
+                let target = e.target;
+                while(target.parentNode.id != "comments")
+                    target = e.parentNode;
+
+                if(target && target == "DIV" && target.id=="comments") {
+                    let id = target.id;
                     let timeline = timeLineModule.getTimeLineById(id)
                     console.log(timeline);
                 }
-                else
-                    e.bubbles();
+
 
             });
             $("#comments").mouseleave((e)=>{
-                if(e.target && e.target.nodeName == "DIV" && e.target.parentNode.id=="comments") {
+                let target = e.target;
+                while(target.parentNode.id != "comments")
+                   target = e.parentNode;
+
+                if(target && target == "DIV" && target.id=="comments") {
                     console.log("leaving");
                 }
-                else
-                    e.bubbles();
+
             });
 
             $("#comments").click(async (e)=>{
