@@ -140,10 +140,10 @@
             });
             $("#comments").mouseenter((e)=>{
                 let target = e.target;
-                while(target !== undefined &&  target.parentNode !== undefined && target.id != "comments")
+                while(target !== undefined &&  target.parentNode !== undefined && target.parentNode.id != "comments")
                     target = e.parentNode;
 
-                if(target && target == "DIV" && target.id=="comments") {
+                if(target && target == "DIV" && target.parentNode.id=="comments") {
                     let id = target.id;
                     let timeline = timeLineModule.getTimeLineById(id)
                     console.log(timeline);
@@ -153,10 +153,10 @@
             });
             $("#comments").mouseleave((e)=>{
                 let target = e.target;
-                while(target !== undefined && target.parentNode !== undefined && target.id != "comments")
+                while(target !== undefined && target.parentNode !== undefined && target.parentNode.id != "comments")
                    target = e.parentNode;
 
-                if(target && target == "DIV" && target.id=="comments") {
+                if(target && target == "DIV" && target.parentNode.id=="comments") {
                     console.log("leaving");
                 }
 
