@@ -138,7 +138,7 @@
             $("#refreshComments").click((e) => {
                timeLineModule.getChanges(parseInt($("#currentTitleId").val()))
             });
-            $("#comments").mouseenter((e)=>{
+            $("#comments > div").mouseenter((e)=>{
         ;
                 if(e.target && e.target.nodeName == "DIV") {
                     let id = e.target.id;
@@ -146,7 +146,7 @@
                     console.log(timeline);
                 }
             });
-            $("#comments").mouseleave((e)=>{
+            $("#comments > div").mouseleave((e)=>{
 
                 console.log("leaving");
             });
