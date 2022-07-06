@@ -83,7 +83,7 @@ public class newTextDAO {
     @Transactional
     public textToComment getText(String title){
 
-        String sql = "SELECT t FROM textToComment t WHERE t.title=:title";
+        String sql = "SELECT t FROM textToComment t WHERE t.title=:title AND t.isdeleted=False";
 
         TypedQuery<textToComment> queryType = em.createQuery(sql, textToComment.class);
         queryType.setParameter("title",title);
