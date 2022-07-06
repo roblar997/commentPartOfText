@@ -173,7 +173,27 @@
                  else if(e.target.innerText == "Highlight commented text"){
                      let id = e.target.parentNode.parentNode.id;
                      let timeline = timeLineModule.getTimeLineById(id)
-                     console.log(timeline)
+
+                     $("#commentHighlight").empty();
+                     let start = parseInt(timeline.start)
+                     let end = parseInt(timeline.end)
+
+                     let htmlBefore = '<div style=    "background-color:white ; color:black">'
+                     htmlBefore += String($('#textToComment')[0].value).substring(0,start-1)
+                     htmlBefore += "</div>";
+                     $(htmlBefore).appendTo("#commentHighlight")
+
+                     let html = '<div style=    "background-color:greenyellow;  color:white">'
+                     html += String($('#textToComment')[0].value).substring(start,end)
+                     html += "</div>";
+                     $(html).appendTo("#commentHighlight")
+
+
+                     let htmlAfter = '<div style=    "background-color:white ; color:black">'
+                     htmlAfter += String($('#textToComment')[0].value).substring(end,$('#textToComment')[0].value.length);
+                     htmlAfter += "</div>";
+                     $(htmlAfter).appendTo("#commentHighlight")
+
                  }
                 }
 
@@ -296,6 +316,7 @@
         </div>
         <p class="h3" style="margin-top: 10px" >Commenting following text </p>
         <div id="isCommenting" style="width:320px; height:220px; margin-top: 10px" readonly> </div>
+        <div id="commentHighlight" style="width:320px; height:220px; margin-top: 10px" readonly> </div>
 
 
     </div>
