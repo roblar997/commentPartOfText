@@ -138,6 +138,15 @@
             $("#refreshComments").click((e) => {
                timeLineModule.getChanges(parseInt($("#currentTitleId").val()))
             });
+            $("#comments").mouseenter((e)=>{
+                let id = e.target.parentNode.parentNode.id;
+                let timeline = timeLineModule.getTimeLineById(id)
+                console.log(timeline);
+            });
+            $("#comments").mouseleave((e)=>{
+
+                console.log("leaving");
+            });
 
             $("#comments").click(async (e)=>{
 
@@ -169,6 +178,7 @@
 
                  }
                 }
+
             });
 
 
