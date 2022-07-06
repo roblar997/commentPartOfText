@@ -144,12 +144,16 @@
                     let timeline = timeLineModule.getTimeLineById(id)
                     console.log(timeline);
                 }
+                else
+                    e.bubbles();
 
             });
             $("#comments").mouseleave((e)=>{
                 if(e.target && e.target.nodeName == "DIV" && e.target.parentNode.id=="comments") {
                     console.log("leaving");
                 }
+                else
+                    e.bubbles();
             });
 
             $("#comments").click(async (e)=>{
