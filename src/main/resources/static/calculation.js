@@ -218,7 +218,7 @@ var timeLineModule = (function(){
 //
 
                 html += '<div class="card-body">';
-                html += '<p style="background-color:lightskyblue">' +  " <strong>Commenting</strong>: " + String($('#textToComment')[0].value).substring(parseInt(obj[key].start),parseInt(obj[key].end))     + '</p>';
+                html += '<p style="width: 50%;background-color:lightskyblue">' +  " <strong>Commenting</strong>: " + String($('#textToComment')[0].value).substring(parseInt(obj[key].start),parseInt(obj[key].end))     + '</p>';
                 html += '<p>' +  " <strong>id</strong>: " + obj[key].id + '</p>';
                 html += '<p>' +  " <strong>user</strong>: " + obj[key].user + '</p>';
                 html += '<p>' +  " <strong>timestampCreated</strong>: " + obj[key].timestampCreated + '</p>';
@@ -340,7 +340,7 @@ var timeLineModule = (function(){
             html += '<div class="card bg-outline-info text-dark  mt-5" id='  + obj[key].id + '>';
 
             html += '<div class="card-body">';
-            html += '<p style="background-color:lightskyblue">' +  " <strong>Commenting</strong>: " + String($('#textToComment')[0].value).substring(parseInt(obj[key].start),parseInt(obj[key].end))     + '</p>';
+            html += '<p style="width: 50%;background-color:lightskyblue">' +  " <strong>Commenting</strong>: " + String($('#textToComment')[0].value).substring(parseInt(obj[key].start),parseInt(obj[key].end))     + '</p>';
             html += '<p>' +  " <strong>id</strong>: " + obj[key].id + '</p>';
             html += '<p>' +  " <strong>user</strong>: " + obj[key].user + '</p>';
             html += '<p>' +  " <strong>timestampCreated</strong>: " + obj[key].timestampCreated + '</p>';
