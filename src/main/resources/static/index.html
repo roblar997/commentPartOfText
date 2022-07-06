@@ -139,7 +139,7 @@
                timeLineModule.getChanges(parseInt($("#currentTitleId").val()))
             });
             $("#comments > div").mouseenter((e)=>{
-        ;
+
                 if(e.target && e.target.nodeName == "DIV") {
                     let id = e.target.id;
                     let timeline = timeLineModule.getTimeLineById(id)
