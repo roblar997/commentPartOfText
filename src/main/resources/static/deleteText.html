@@ -20,12 +20,14 @@
     <script>
 
         $( async function() {
-                    $("#btnAddText").click((e)=>{
-                        let textToAdd = textModule.extractNewText();
-                        textModule.addNewText(textToAdd);
-                    });
+            let titles = await textModule.getTitles();
+            let html = "";
+            titles.forEach((res) => {
+                html += "<option value='" + res + "'>" + res + "</option>";
+            });
 
-                });
+            $(html).appendTo("#selectTitles");
+        });
 
     </script>
 </head>
@@ -43,11 +45,11 @@
                 <li class="nav-item ">
                     <a class="nav-link  " href="index.html" style=" font-size: 16px; background-color: darkseagreen; color: black ">Comment text</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#" style="font-size: 16px; background-color: darkseagreen; color: black ">Create text</a>
-                </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="deleteText.html" style="font-size: 16px; background-color: darkseagreen; color: black ">Delete text</a>
+                    <a class="nav-link" href="createText.html" style="font-size: 16px; background-color: darkseagreen; color: black ">Create text</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" style="font-size: 16px; background-color: darkseagreen; color: black ">Delete text</a>
                 </li>
 
             </ul>
@@ -63,18 +65,9 @@
 
 
     <div class="container">
-        <header class="h1"  style=";  margin-top: 20px">Create a new text</header>
-        <div>
-            <div>
-                <label for="textTitle" class="h2"  style=";  margin-top: 20px" >Title </label><br/>
-                <input type="text" placeholder="title" style="; width:210px; margin-top: 10px"id="textTitle"></div>
-           </div>
-            <div>  <label for="textToCreate" class="h2 " style=";  margin-top: 20px"  >Text to comment </label><br/>
-                <textarea id="textToCreate" style="; width:320px; height:320px; margin-top: 10px" > Create a text..
-                 </textarea>
-            </div>
-
-            <button id="btnAddText" class="btn btn-success" style=";  margin-top: 20px">Submit text</button>
+        <p class="h3" style="margin-top: 10px" >Text titles </p>
+        <select id="selectTitles" style="width:150px; margin-top: 10px"> </select> <br>
+        <button id="deleteText" class="btn btn-danger my-3 ">Delete text </button> <br>
         </div>
 
 
