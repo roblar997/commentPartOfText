@@ -140,7 +140,7 @@
             });
             $("#comments").mouseenter((e)=>{
                 let target = e.target;
-                while(target.parentNode != undefined && target.id != "comments")
+                while(target !== undefined &&  target.parentNode !== undefined && target.id != "comments")
                     target = e.parentNode;
 
                 if(target && target == "DIV" && target.id=="comments") {
@@ -153,7 +153,7 @@
             });
             $("#comments").mouseleave((e)=>{
                 let target = e.target;
-                while(target.parentNode != undefined && target.id != "comments")
+                while(target !== undefined && target.parentNode !== undefined && target.id != "comments")
                    target = e.parentNode;
 
                 if(target && target == "DIV" && target.id=="comments") {
