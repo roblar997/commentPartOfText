@@ -6,6 +6,7 @@ import com.example.demo.wrapper.*;
 import com.example.demo.wrapperServices.WrapperService;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -20,7 +21,7 @@ import java.lang.reflect.Type;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+@CrossOrigin
 @WebServlet(name = "textServlet", value = "/textServlet")
 public class textServlet extends HttpServlet {
 

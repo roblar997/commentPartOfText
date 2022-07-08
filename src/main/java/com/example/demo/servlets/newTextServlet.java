@@ -6,6 +6,7 @@ import com.example.demo.entities.textToComment;
 import com.example.demo.wrapper.*;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.ejb.EJB;
 import javax.servlet.*;
@@ -18,6 +19,7 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 @WebServlet(name = "newTextServlet", value = "/newTextServlet")
+@CrossOrigin
 public class newTextServlet extends HttpServlet {
     @EJB
     private newTextDAO newTextDAO;
