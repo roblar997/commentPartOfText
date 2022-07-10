@@ -339,20 +339,20 @@ var timeLineModule = (function(){
         for (let key in obj) {
             html += '<div class="card bg-outline-info text-dark  mt-5" id='  + obj[key].id + '>';
 
-            html += '<div class="card-body">';
-            html += '<p style="width: 50%;background-color:lightskyblue">' +  " <strong>Commenting</strong>: " + String($('#textToComment')[0].value).substring(parseInt(obj[key].start),parseInt(obj[key].end))     + '</p>';
-            html += '<p>' +  " <strong>id</strong>: " + obj[key].id + '</p>';
-            html += '<p>' +  " <strong>user</strong>: " + obj[key].user + '</p>';
-            html += '<p>' +  " <strong>timestampCreated</strong>: " + obj[key].timestampCreated + '</p>';
-            html += '<p>' +  " <strong>timestampChanged</strong>: " + obj[key].timestampChanged + '</p>';
-            html += '<p>' +  "<strong> text</strong>: " + obj[key].text + '</p>';
-            html += '<p>' +  " <strong>like</strong>: " + obj[key].like + '</p>';
-            html += '<p>' +  " <strong>dislike</strong>: " + obj[key].dislike + '</p>';
-            html += '<p>' +  " <strong>deleted</strong>: " + obj[key].isdeleted + '</p>';
-            html += '<button type="button" class="btn btn-info col-2 m-1 p-1" >Highlight commented text</button>';
-            html += '<button type="button" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-warning col-1 m-1 p-1">Change</button>';
-            html += '<button type="button" class="btn btn-danger col-1 m-1 p-1" >Remove</button>';
-            html += '</div>'
+                html += '<div class="card-body">';
+                html += '<p style="width: 50%;background-color:lightskyblue">' +  " <strong>Commenting</strong>: " + String($('#textToComment')[0].value).substring(parseInt(obj[key].start),parseInt(obj[key].end))     + '</p>';
+                html += '<p>' +  " <strong>id</strong>: " + obj[key].id + '</p>';
+                html += '<p>' +  " <strong>user</strong>: " + obj[key].user + '</p>';
+                html += '<p>' +  " <strong>timestampCreated</strong>: " + obj[key].timestampCreated + '</p>';
+                html += '<p>' +  " <strong>timestampChanged</strong>: " + obj[key].timestampChanged + '</p>';
+                html += '<p>' +  "<strong> text</strong>: " + obj[key].text + '</p>';
+                html += '<p>' +  " <strong>like</strong>: " + obj[key].like + '</p>';
+                html += '<p>' +  " <strong>dislike</strong>: " + obj[key].dislike + '</p>';
+                html += '<p>' +  " <strong>deleted</strong>: " + obj[key].isdeleted + '</p>';
+                html += '<button type="button" class="btn btn-info col-2 m-1 p-1" >Highlight commented text</button>';
+                html += '<button type="button" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-warning col-1 m-1 p-1">Change</button>';
+                html += '<button type="button" class="btn btn-danger col-1 m-1 p-1" >Remove</button>';
+                html += '</div>'
             html += '</div>'
         }
 
