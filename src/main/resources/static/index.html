@@ -1,15 +1,414 @@
-<!DOCTYPE html><html lang="en"><head>
-  <meta charset="utf-8">
-  <title>AngularClient</title>
-  <base href="/angular">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <style type="text/css">@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fCRc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fABc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fCBc4AMP6lbBP.woff2) format('woff2');unicode-range:U+1F00-1FFF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBxc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0370-03FF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fCxc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fChc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4AMP6lQ.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu72xKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu5mxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu7mxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+1F00-1FFF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4WxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0370-03FF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu7WxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu7GxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fCRc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fABc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fCBc4AMP6lbBP.woff2) format('woff2');unicode-range:U+1F00-1FFF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBxc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0370-03FF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fCxc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fChc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}</style>
-  <style type="text/css">@font-face{font-family:'Material Icons';font-style:normal;font-weight:400;src:url(https://fonts.gstatic.com/s/materialicons/v134/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format('woff2');}.material-icons{font-family:'Material Icons';font-weight:normal;font-style:normal;font-size:24px;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;word-wrap:normal;direction:ltr;-webkit-font-feature-settings:'liga';-webkit-font-smoothing:antialiased;}</style>
-<style>.mat-typography{font:400 14px/20px Roboto,Helvetica Neue,sans-serif;letter-spacing:normal}body{margin:0;font-family:Roboto,Helvetica Neue,sans-serif}</style><link rel="stylesheet" href="styles.76e6086aa37ca9e6.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.76e6086aa37ca9e6.css"></noscript></head>
-<body class="mat-typography">
-  <app-root></app-root>
-<script src="runtime.20185f106391a3d4.js" type="module"></script><script src="polyfills.303872a78006de8b.js" type="module"></script><script src="main.9307d9c3ddca4edf.js" type="module"></script>
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name ="viewport" content ="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-</body></html>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+  <script src="./calculation.js"></script>
+  <script src="./newTexts.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- For integration tests through heroku -->
+  <script src="https://echo.loadmill.com/recorder.js?loadmill_code=eb32f5e5-41b5-4894-b0f0-1410a1d285fa"></script>
+  <script>
+
+    $( async function() {
+              let titles = await textModule.getTitles();
+              let html="";
+              titles.forEach((res)=>{
+                html+="<option value='" + res + "'>" + res + "</option>";
+              });
+
+              $(html).appendTo("#selectTitles");
+              console.log(html);
+
+              $("#btnGetText").click(async (e)=>{
+                let title=$("#selectTitles").val();
+                console.log(title);
+                let text = await textModule.getText(title);
+                $("#textToComment").val(String(text.text));
+                $("#currentTitleId").val(parseInt(text.id));
+                await timeLineModule.getInitState(parseInt(text.id));
+                $( "#likes" ).val( "0");
+                $( "#dislikes" ).val( "0");
+                $("#isCommenting").empty();
+
+                $("#comments").empty()
+                $("#textDensityMap").empty()
+                console.log(text);
+                let html="";
+                let nmbTimelines = timeLineModule.getCountingList(0,String(text.text).length);
+
+                [...(String(text.text))].forEach((x,idx)=>{
+
+                  if(nmbTimelines[idx] >= 32)
+                    html+="<span style='background-color:red'>" + x + "</span>";
+                  else if(nmbTimelines[idx] >= 16)
+                    html+="<span style='background-color:yellow'>" + x + "</span>";
+                  else if(nmbTimelines[idx] >= 8)
+                    html+="<span style='background-color:lightyellow'>" + x + "</span>";
+                  else if(nmbTimelines[idx] >= 4)
+                    html+="<span style='background-color:green'>" + x + "</span>";
+                  else if(nmbTimelines[idx] >= 2)
+                    html+="<span style='background-color:lightgreen'>" + x + "</span>";
+                  else if(nmbTimelines[idx] >= 1)
+                    html+="<span style='background-color:lightskyblue'>" + x + "</span>";
+                  else
+                    html+="<span style='background-color:white'>" + x + "</span>";
+
+                });
+                console.log(html);
+                $(html).appendTo("#textDensityMap");
+              });
+
+              //timeLineModule.initFeatureTree(100,100)
+              // await timeLineModule.getInitState(parseInt($("#currentTitleId").val()));
+              $( "#likes" ).val( "0");
+              $( "#dislikes" ).val( "0");
+
+              $("#textToComment").mouseup((e)=>{
+                let startSelected = $('#textToComment')[0].selectionStart
+                let stopSelected   = $('#textToComment')[0].selectionEnd
+
+                console.log( startSelected + " " + stopSelected)
+                timeLineModule.setStartSelect(startSelected)
+                timeLineModule.setStopSelect(stopSelected)
+
+                $("#isCommenting").empty();
+
+
+                let htmlBefore = '<span style=    "background-color:white ; color:black">'
+                htmlBefore += String($('#textToComment')[0].value).substring(0,startSelected)
+                htmlBefore += "</span>";
+                $(htmlBefore).appendTo("#isCommenting")
+
+                let html = '<span style=    "background-color:lightskyblue;  color:black">'
+                html += String($('#textToComment')[0].value).substring(startSelected,stopSelected)
+                html += "</span>";
+                $(html).appendTo("#isCommenting")
+
+
+                let htmlAfter = '<span style=    "background-color:white ; color:black">'
+                htmlAfter += String($('#textToComment')[0].value).substring(stopSelected,$('#textToComment')[0].value.length);
+                htmlAfter += "</span>";
+                $(htmlAfter).appendTo("#isCommenting")
+
+
+                $( "#likes" ).val(timeLineModule.countLikes( startSelected, stopSelected,$("#percent").val() ) );
+                $( "#dislikes" ).val(timeLineModule.countDisLikes( startSelected, stopSelected,$("#percent").val() ) );
+                $("#comments").empty()
+                obj=timeLineModule.filterListByTime(startSelected ,stopSelected,$("#percent").val() );
+                let html2 = '';
+                for (let key in obj) {
+                  html2 += '<div class="card bg-outline-info text-dark  mt-5" id='  + obj[key].id + '>';
+//
+
+                  html2 += '<div class="card-body">';
+                  html2 += '<p style="width: 50%;background-color:lightskyblue">' +  " <strong>Commenting</strong>: " + String($('#textToComment')[0].value).substring(parseInt(obj[key].start),parseInt(obj[key].end))     + '</p>';
+                  html2 += '<p>' +  " <strong>id</strong>: " + obj[key].id + '</p>';
+                  html2 += '<p>' +  " <strong>user</strong>: " + obj[key].user + '</p>';
+                  html2 += '<p>' +  " <strong>timestampCreated</strong>: " + obj[key].timestampCreated + '</p>';
+                  html2 += '<p>' +  " <strong>timestampChanged</strong>: " + obj[key].timestampChanged + '</p>';
+                  html2 += '<p>' +  "<strong> text</strong>: " + obj[key].text + '</p>';
+                  html2 += '<p>' +  " <strong>like</strong>: " + obj[key].like + '</p>';
+                  html2 += '<p>' +  " <strong>dislike</strong>: " + obj[key].dislike + '</p>';
+                  html2 += '<p>' +  " <strong>deleted</strong>: " + obj[key].isdeleted + '</p>';
+                  html2 += '<button type="button" class="btn btn-info col-2 m-1 p-1" >Highlight commented text</button>';
+                  html2 += '<button type="button" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-warning col-1 m-1 p-1">Change</button>';
+                  html2 += '<button type="button" class="btn btn-danger col-1 m-1 p-1" >Remove</button>';
+                  html2 += '</div>'
+                  html2 += '</div>'
+                }
+
+                $(html2).appendTo("#comments");
+              })
+              $("#changeButton").click((e) => {
+                let res = timeLineModule.extractChangedTimeline()
+                timeLineModule.changeTimeLineById(res.id,res)
+
+              });
+              $("#refreshComments").click((e) => {
+                timeLineModule.getChanges(parseInt($("#currentTitleId").val()))
+              });
+
+
+              $("#comments").click(async (e)=>{
+
+                //Event delegation to avoid memory leaks by adding and removing
+                // a lot of event listeners.
+                if(e.target && e.target.nodeName == "BUTTON") {
+
+                  if(e.target.innerText == "Change"){
+                    let id = e.target.parentNode.parentNode.id;
+                    let timeline = timeLineModule.getTimeLineById(id)
+                    $("#commentCommentChange").val(timeline.text)
+                    $("#commentUserChange").val(timeline.user)
+                    if(timeline.like){
+                      $("#likeYesChange").prop('checked',true);
+                    }
+                    else if(timeline.dislike){
+                      $("#dislikeYesChange").prop('checked',true);
+                    }
+                    else{
+                      $("#likeDislikeNoChange").prop('checked',true);
+                    }
+                    $("#commentIdChange").val(id)
+
+
+                  }
+                  else if(e.target.innerText == "Remove"){
+                    let id = e.target.parentNode.parentNode.id;
+                    timeLineModule.removeTimeLineById(id)
+
+                  }
+                  else if(e.target.innerText == "Highlight commented text"){
+                    let id = e.target.parentNode.parentNode.id;
+                    let timeline = timeLineModule.getTimeLineById(id)
+
+                    $("#commentHighlight").empty();
+                    let start = parseInt(timeline.start)
+                    let end = parseInt(timeline.end)
+
+                    let htmlBefore = '<span style=    "background-color:white ; color:black">'
+                    htmlBefore += String($('#textToComment')[0].value).substring(0,start-1)
+                    htmlBefore += "</span>";
+                    $(htmlBefore).appendTo("#commentHighlight")
+
+                    let html = '<span style=    "background-color:lightskyblue;  color:black">'
+                    html += String($('#textToComment')[0].value).substring(start,end)
+                    html += "</span>";
+                    $(html).appendTo("#commentHighlight")
+
+
+                    let htmlAfter = '<span style=    "background-color:white ; color:black">'
+                    htmlAfter += String($('#textToComment')[0].value).substring(end,$('#textToComment')[0].value.length);
+                    htmlAfter += "</span>";
+                    $(htmlAfter).appendTo("#commentHighlight")
+
+                  }
+                }
+
+              });
+
+
+
+
+
+              $("#addTimeline").click((e) => {
+                let timelineToAdd = timeLineModule.extractTidslinje();
+                timeLineModule.sendTimeLine(timelineToAdd);
+
+
+              });
+
+              $("#percent").change((e) => {
+
+                $("#comments").empty()
+                $( "#likes" ).val(timeLineModule.countLikes( timeLineModule.getStartSelect(), timeLineModule.getStopSelect(),$("#percent").val() ) );
+                $( "#dislikes" ).val(timeLineModule.countDisLikes( timeLineModule.getStartSelect() ,timeLineModule.getStopSelect(),$("#percent").val() ) );
+                obj=timeLineModule.filterListByTime(timeLineModule.getStartSelect() ,timeLineModule.getStopSelect(),$("#percent").val() );
+                let html = '';
+                for (let key in obj) {
+                  html += '<div class="card bg-outline-info text-dark  mt-5" id='  + obj[key].id + '>';
+
+                  html += '<div class="card-body">';
+                  html += '<p style="width: 50%; background-color:lightskyblue">' +  " <strong>Commenting</strong>: " + String($('#textToComment')[0].value).substring(parseInt(obj[key].start),parseInt(obj[key].end))     + '</p>';
+                  html += '<p>' +  " <strong>id</strong>: " + obj[key].id + '</p>';
+                  html += '<p>' +  " <strong>user</strong>: " + obj[key].user + '</p>';
+                  html += '<p>' +  " <strong>timestampCreated</strong>: " + obj[key].timestampCreated + '</p>';
+                  html += '<p>' +  " <strong>timestampChanged</strong>: " + obj[key].timestampChanged + '</p>';
+                  html += '<p>' +  "<strong> text</strong>: " + obj[key].text + '</p>';
+                  html += '<p>' +  " <strong>like</strong>: " + obj[key].like + '</p>';
+                  html += '<p>' +  " <strong>dislike</strong>: " + obj[key].dislike + '</p>';
+                  html += '<p>' +  " <strong>deleted</strong>: " + obj[key].isdeleted + '</p>';
+                  html += '<button type="button" class="btn btn-info col-2 m-1 p-1" >Highlight commented text</button>';
+                  html += '<button type="button" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-warning col-1 m-1 p-1">Change</button>';
+                  html += '<button type="button" class="btn btn-danger col-1 m-1 p-1" >Remove</button>';
+                  html += '</div>'
+                  html += '</div>'
+                }
+
+                $(html).appendTo("#comments");
+
+              });
+
+
+
+
+
+
+            }
+
+    );
+  </script>
+</head>
+</head>
+<body>
+<!--[START] https://www.w3schools.com/bootstrap5/bootstrap_navbar.php-->
+<nav class="navbar navbar-expand-sm bg-light navbar-light"  style="background-color: darkseagreen !important; color: black !important;">
+  <div class="container-fluid" style="background-color: darkseagreen !important; color: black !important;">
+    <a class="navbar-brand" href="#" style=" font-size: 16px; background-color: darkseagreen; color: black ">Comment part of a text</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar" >
+      <ul class="navbar-nav" style="margin-left: 2px; "  >
+        <li class="nav-item active">
+          <a class="nav-link  " href="#" style=" font-size: 16px; background-color: darkseagreen; color: black ">Comment text</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="createText.html" style="font-size: 16px; background-color: darkseagreen; color: black ">Create text</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="deleteText.html" style="font-size: 16px; background-color: darkseagreen; color: black ">Delete text</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!--[END] https://www.w3schools.com/bootstrap5/bootstrap_navbar.php-->
+<main>
+
+
+
+  <div class="container">
+    <div>
+      <div>
+        <p class="h3" style="margin-top: 10px" >Text titles </p>
+        <select id="selectTitles" style="width:150px; margin-top: 10px"> </select> <br>
+        <button id="btnGetText" class="btn btn-success" style="margin-top:10px">Load text</button>
+        <input  type="hidden" id="currentTitleId" value="-1" />
+      </div>
+
+      <div>
+        <div class="form-group centered">
+          <p class="h3" style="margin-top: 10px" >Text to comment </p>
+          <textarea id="textToComment" style="overflow-y: auto; width:320px; height:320px; margin-top: 10px" readonly> Choose a title and press load text, to get
+                 it pasted in here</textarea>
+
+
+        </div>
+
+        <p class="h3" style="margin-top: 10px" >Search for comments by marking text </p>
+        <label for="percent"><strong>Percent(%) </strong>: Adjust this value to capture more comments inside.<br>
+          100% requires full match of comment. Lesser values capture smaller <br> comments inside area</label>
+        <input  class="form-control input-sm w-25 " type="number" id="percent" value="100"></input>
+        <p>
+          <label for="likes">Likes <i class="fa fa-thumbs-up" aria-hidden="true"> </i></label>
+
+          <input type="text" id="likes" readonly style="border:0; color:black; font-weight:bold;" >
+        </p>
+        <p>
+          <label for="dislikes">Dislikes <i class="fa fa-thumbs-down" aria-hidden="true"> </i></label>
+
+          <input  type="text" id="dislikes" readonly style="border:0; color:black; font-weight:bold;" >
+        </p>
+        <p class="h3" style="margin-top: 10px" >Color map of comment density </p>
+        <div id="textDensityMap" style="overflow-y: auto; width:320px; height:320px; margin-top: 10px" readonly> ..</div>
+
+      </div>
+      <p class="h3" style="margin-top: 10px" >Commenting following text </p>
+      <div id="isCommenting" style="overflow-y: auto;width:320px; height:220px; margin-top: 10px" readonly> </div>
+      <p class="h3" style="margin-top: 10px" >Create a comment </p>
+      <section id="kommentar">
+
+        <div class="form-group">
+          <label for="commentUser"> User: </label>
+          <input  class="form-control input-sm w-25"  id="commentUser" placeholder=" user" /><br>
+        </div>
+        <div class="form-group">
+          <label for="commentComment"> Comment: </label>
+          <textarea  class="form-control input-sm w-25"  id="commentComment" placeholder="Comment" rows="10"></textarea>
+        </div>
+
+        <div class="form-group">
+          <header> Do I like this part of text?</header>
+          <div>
+            <label for="likeYes">Like:</label> <input  type="radio" id="likeYes" name="commentLike">  <br>
+            <label for="dislikeYes">Dislike:</label> <input   type="radio" id="dislikeYes" name="commentLike" ><br>
+            <label for="likeDislikeNo">Don't know:</label>  <input   type="radio" id="likeDislikeNo" name="commentLike"  checked><br>
+          </div>
+        </div>
+        <div class="row">
+          <button id="addTimeline" class="btn btn-success col-1 m-1 p-1"><div class="text-wrap">Comment text</div></button>
+        </div>
+
+
+
+
+        <!--[START] https://www.w3schools.com/bootstrap5/bootstrap_modal.php -->
+
+
+        <!-- The Modal -->
+        <div class="modal" id="myModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">Change comment</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                <div class="form-group">
+                  <input  type="hidden" id="commentIdChange"  />
+                  <label for="commentUser"> User: </label>
+                  <input  class="form-control input-sm w-50"  id="commentUserChange" placeholder=" user" /><br>
+                </div>
+                <div class="form-group">
+                  <label for="commentComment"> Comment: </label>
+                  <textarea  class="form-control input-sm w-50"  id="commentCommentChange" placeholder="Comment" rows="10"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <header> Do I like this part of video?</header>
+                  <div>
+                    <label for="likeYes">Like:</label> <input  type="radio" id="likeYesChange" name="commentLike">  <br>
+                    <label for="dislikeYes">Dislike:</label> <input   type="radio" id="dislikeYesChange" name="commentLike" ><br>
+                    <label for="likeDislikeNo">Don't know:</label>  <input   type="radio" id="likeDislikeNoChange" name="commentLike"  checked><br>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="changeButton">Change</button>
+                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!--[END] https://www.w3schools.com/bootstrap5/bootstrap_modal.php -->
+      </section>
+
+    </div>
+
+    <div class="form-group centered">
+
+
+      <p class="h3" >Comments       <i class="fa fa-refresh m-1" id="refreshComments" ></i></p>
+      <p class="h3" style="margin-top: 10px" >Is a comment of following </p>
+      <div id="commentHighlight" style="overflow-y: auto;width:320px; height:220px; margin-top: 10px" readonly> </div>
+
+      <div id="comments" class="container"></div>
+
+
+    </div>
+  </div>
+</main>
+
+</body>
+</html>
