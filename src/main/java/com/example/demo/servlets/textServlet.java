@@ -196,7 +196,7 @@ public class textServlet extends HttpServlet {
             if(isTypemethodIdWrapper){
                 try{
                     tidslinjeDAO.removeTidsline(methodIdChangeDateWrapper.getId(),methodIdChangeDateWrapper.getTimestampChanged());
-                    out.println("OK");
+
                 }
 
                 catch (Exception ex){
