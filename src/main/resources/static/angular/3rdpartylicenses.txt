@@ -1,4 +1,9 @@
-@angular/animations
+runtime.577b9860bb582cea.js
+styles.6686938278c034f1.css
+polyfills.ac768cebb7052882.js
+main.0efd0f20d02d5332.js
+favicon.ico
+3rdpartylicenses.txt@angular/animations
 MIT
 
 @angular/common
